@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <button class="navbar-toggler" (click)="collapse=!collapse" type="button" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse" (click)="collapse=true" [hidden]="collapse">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a [routerLink]="['/home']" class="nav-link">Home</a>
+            </li>
+
+            <li class="nav-item" >
+                <a [routerLink]="['/blog']" class="nav-link">Blog</a>
+            </li>
+
+            <li class="nav-item" >
+                <a [routerLink]="['/contact']" class="nav-link">Contact</a>
+            </li>
+
+            <li class="nav-item" >
+                <a [routerLink]="['/stuff']" class="nav-link">Stuff</a>
+            </li>
+        </ul>
+    </div>
+</nav>
