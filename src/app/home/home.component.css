@@ -15,42 +15,28 @@ body, html {
     from {background-position: 100px 280px;}
     to {background-position: -10000px 280px;}
     }
-  body {
-
-     
+   .social-icons {
+    margin-top:1px; }
    
-    /* background-color     : rgb(0, 0, 0); */
-    /* background-attachment: fixed; */
-     font-family          : 'PT Sans', sans-serif;/
-    /* background-position  : 100px 280px; */
-    /* background-repeat    : repeat-x; */
-    /* background-image     : url("/assets/giffy.gif"); */
-    /* animation            : animatedBackground 400s linear infinite; */
+   .social-icons a {
+      margin:5 3px;
+      font-size: 58px;
+      text-decoration: none;
+      color: #cccccc; }
+   .social-icons a:hover {
+        color: #f07878; }
+
+    body {
+
+   
+        font-family          : 'PT Sans', sans-serif;
      max-width: 100%;
      height: auto;
-   /* background-image: url("/assets/giffy.gif") no-repeat center center fixed; */
-   /*    background-size: cover; */
-   /*        background-size:100%; */
-   /*  background-repeat: repeat-y; */
      background-attachment: fixed; 
-   /*  height:100%; */
-   /*  width:100%; */
   background-image: url('/assets/giphy (5).gif');
     background-size: cover;  
   }
-  bob{
-      background: url("/assets/giffy (1).gif") no-repeat center center fixed; 
-      background-size: cover;
-  }
-
-/*   img { */
-/*     border: 2px solid pink; */
-/*     border-radius: 50% */
-/*   } */
-/*   .responsive { */
-/*     width: 20%; */
-/*     height: auto; */
-/* } */
+ 
    .avatar {
     vertical-align: middle;
     width: 50%;
