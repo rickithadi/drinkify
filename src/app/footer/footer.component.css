@@ -1,0 +1,17 @@
+footer {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px; }
+  footer p:first-child {
+    font-size: 30px; }
+  footer p {
+    color: #ffffff; }
+  footer .social-icons {
+    margin-top: 15px; }
+    footer .social-icons a {
+      margin: 0 3px;
+      font-size: 28px;
+      text-decoration: none;
+      color: #cccccc; }
+      footer .social-icons a:hover {
+        color: #ffffff; }

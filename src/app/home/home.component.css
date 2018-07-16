@@ -21,7 +21,7 @@ body, html {
    
     /* background-color     : rgb(0, 0, 0); */
     /* background-attachment: fixed; */
-     font-family          : 'PT Sans', sans-serif;
+     font-family          : 'PT Sans', sans-serif;/
     /* background-position  : 100px 280px; */
     /* background-repeat    : repeat-x; */
     /* background-image     : url("/assets/giffy.gif"); */
@@ -37,19 +37,24 @@ body, html {
    /*  width:100%; */
   background-image: url('/assets/giphy (5).gif');
     background-size: cover;  
-    height: 60%;
   }
   bob{
       background: url("/assets/giffy (1).gif") no-repeat center center fixed; 
       background-size: cover;
   }
 
-  img {
-    border-radius: 100%;
-    border       : 1px solid #000000;
-    margin       : 0;
-    padding      : 0;
-    max-width: 100%;
-    height: auto;
-   
-  }
+/*   img { */
+/*     border: 2px solid pink; */
+/*     border-radius: 50% */
+/*   } */
+/*   .responsive { */
+/*     width: 20%; */
+/*     height: auto; */
+/* } */
+   .avatar {
+    vertical-align: middle;
+    width: 50%;
+    
+    height: 100%;
+    border-radius: 50%;
+}
