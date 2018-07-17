@@ -1,0 +1,14 @@
+.h2 a:hover{
+   color:#000000; 
+}
+.e:hover {
+    /* background-color: #f07878; */
+      max-width: 100%;
+     height: auto;
+     background-attachment: fixed; 
+  background-image: url('/assets/giphy (2).gif');
+    background-size: repeat;  
+} 
+.e:hover h2,h3{
+    color:white;
+}

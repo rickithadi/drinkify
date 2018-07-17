@@ -1,4 +1,27 @@
-<p>
-  blog works!
-</p>
-{{result | json}}
+<br>
+<br>
+<h1 class="text-center"> Sometimes i write things </h1>
+<br>
+<br>
+<div *ngFor="let r of result | reverse " class="text-center ; e" (click)="openModal(template)" >
+    <ng-template #template>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left"> {{r.name}} </h4>
+                      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+
+        </div>
+        <hr>
+        <div class="modal-body">
+            <div [innerHTML]='r.content'>
+            </div>
+        </div>
+    </ng-template>
+    <h2>{{r.name}}</h2>
+    <h3>{{r.short_desc}}</h3>
+    <br>
+    <br>
+    <hr>
+</div>
+ 

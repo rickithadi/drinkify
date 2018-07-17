@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgModule } from '@angular/core';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ActivatedRoute, RouterModule, CanActivate } from "@angular/router";
@@ -19,7 +19,7 @@ import { StuffComponent } from './stuff/stuff.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
 import { FieldErrorDisplayComponent } from './field-error-display/field-error-display.component';
-
+import { NgPipesModule } from 'ngx-pipes';
 const appRoutes: Routes = [
     { path: "home", component: HomeComponent },
     { path: "contact", component: ContactComponent },
@@ -43,6 +43,8 @@ const appRoutes: Routes = [
     ],
     imports: [
         AngularFontAwesomeModule,
+        NgPipesModule,
+        ModalModule.forRoot(),
         HttpModule,
         ReactiveFormsModule,
         HttpClientModule,

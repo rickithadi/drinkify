@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
+import { OrderPipe } from 'ngx-order-pipe';
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/do";
 import "rxjs/Rx";
+
+import { BsModalService } from "ngx-bootstrap/modal";
+import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
 @Component({
     selector: 'app-blog',
     templateUrl: './blog.component.html',
@@ -12,7 +16,8 @@ import "rxjs/Rx";
 export class BlogComponent implements OnInit {
     localBlogs: any;
     result: any;
-    constructor(private http: HttpClient) { }
+    modalRef: BsModalRef;
+    constructor(private http: HttpClient, private modalService: BsModalService, ) { }
 
     ngOnInit() {
         this.getBlogs()
@@ -25,5 +30,11 @@ export class BlogComponent implements OnInit {
         return this.http
             .get('http://localhost:8080/blogs')
             .map(res => res, this.result);
+    }
+    modal(input: any) {
+        console.log(input);
+    }
+    openModal(template: TemplateRef<any>) {
+        this.modalRef = this.modalService.show(template);
     }
 }
