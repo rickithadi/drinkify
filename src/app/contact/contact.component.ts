@@ -49,7 +49,7 @@ export class ContactComponent implements OnInit {
             console.log("form submitted", this.payload);
             this.route.navigate(["/contact us"]);
             return this.http
-                .post("/api/checkerz", this.payload)
+                .post("http://localhost:8080/contact", this.payload)
                 .subscribe(data => { });
             // this.sendComment(JSON.stringify(this.form);
         } else {

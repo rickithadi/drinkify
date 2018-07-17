@@ -9,6 +9,9 @@
   background-image: url('/assets/giphy (2).gif');
     background-size: repeat;  
 } 
-.e:hover h2,h3{
+.e:hover h2{
+    color:white;
+}
+.e:hover h3{
     color:white;
 }

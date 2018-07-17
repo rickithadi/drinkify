@@ -49,6 +49,7 @@
     "ng-animate": "^0.3.3",
     "ngx-bootstrap": "^3.0.1",
     "ngx-pipes": "^2.3.2",
+    "nodemailer": "^4.6.7",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
     "rxjs": "^5.5.6",
