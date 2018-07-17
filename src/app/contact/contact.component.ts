@@ -47,7 +47,7 @@ export class ContactComponent implements OnInit {
             this.payload = this.form.value;
 
             console.log("form submitted", this.payload);
-            this.route.navigate(["/contact us"]);
+            this.route.navigate(["/success"]);
             return this.http
                 .post("http://localhost:8080/contact", this.payload)
                 .subscribe(data => { });

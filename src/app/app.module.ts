@@ -20,12 +20,13 @@ import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
 import { FieldErrorDisplayComponent } from './field-error-display/field-error-display.component';
 import { NgPipesModule } from 'ngx-pipes';
+import { SuccessComponent } from './success/success.component';
 const appRoutes: Routes = [
     { path: "home", component: HomeComponent },
     { path: "contact", component: ContactComponent },
     { path: "stuff", component: StuffComponent }
     ,
-
+    { path: "success", component: SuccessComponent },
     { path: "blog", component: BlogComponent }
     ,
     { path: "**", component: HomeComponent }
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
         StuffComponent,
         BlogComponent,
         ContactComponent,
-        FieldErrorDisplayComponent
+        FieldErrorDisplayComponent,
+        SuccessComponent
     ],
     imports: [
         AngularFontAwesomeModule,

@@ -61,7 +61,7 @@ app.post("/contact", function(req, res) {
       to     : "rickithadi@gmail.com",                 // list of receivers
         subject: ""+ JSON.stringify(req.body.ref)+ "at "+ JSON.stringify(req.body.created),                     // Subject line
         text   : JSON.stringify(req.body.name) + " at "+  JSON.stringify(req.body.from) ,                           
-        html   : JSON.stringify(req.body.name) + " at "+  JSON.stringify(req.body.from)+ 
+        html   : JSON.stringify(req.body.name) + " at "+  JSON.stringify(req.body.email)+ 
         "<b><h1>Sent you a message </h1></b> <br> <h3>" +
         JSON.stringify(req.body.comment) +
         "</h3>" 

@@ -48,6 +48,7 @@
     "morgan": "^1.6.1",
     "ng-animate": "^0.3.3",
     "ngx-bootstrap": "^3.0.1",
+    "ngx-order-pipe": "^2.0.1",
     "ngx-pipes": "^2.3.2",
     "nodemailer": "^4.6.7",
     "passport": "^0.2.2",
