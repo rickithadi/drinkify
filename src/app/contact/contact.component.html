@@ -1,3 +1,66 @@
-<p>
-  contact works!
-</p>
+<div class="container u-marg--b50">
+    
+    <div class="text-center ">
+        <br>
+        <br>
+        <br>
+        <h1>Hit me up</h1>
+    </div>
+
+
+    <section>
+        <br>
+        <div id="icons-wrapper">
+            <div class="col-lg-10 col-sm-6 mr-auto ml-auto">
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+
+                        <form class="form-horizontal" [formGroup]="form">
+
+                            <div class="form-group" [ngClass]="displayFieldCss('name')">
+                                <div class="col-sm-12">
+                                    <label for="name" class="control-label required">Name</label>
+                                    <input type="text" id="name" class="form-control" formControlName="name">
+                                    <app-field-error-display [displayError]="isFieldValid('name')" errorMsg="Please enter your name">
+                                    </app-field-error-display>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" [ngClass]="displayFieldCss('email')">
+                                <div class="col-sm-12">
+                                    <label for="email" class="control-label required">Email</label>
+                                    <input type="text" id="email" class="form-control" formControlName="email">
+                                    <app-field-error-display [displayError]="isFieldValid('email')" errorMsg="Please enter your email">
+                                    </app-field-error-display>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="displayFieldCss('ref')">
+                                <div class="col-sm-12">
+                                    <label for="ref" class="control-label required">Subject</label>
+                                    <input type="text" id="ref" class="form-control" formControlName="ref">
+                                    <app-field-error-display [displayError]="isFieldValid('ref')" errorMsg="Please enter your name">
+                                    </app-field-error-display>
+                                </div>
+                            </div>
+
+                            <div class="form-group" [ngClass]="displayFieldCss('comment')">
+                                <div class="col-sm-12">
+                                    <label for="comment" class="control-label required">What's up</label>
+                                    <textarea type="text" id="comment" class="form-control" formControlName="comment" rows="4"></textarea>
+                                    <app-field-error-display [displayError]="isFieldValid('comment')" errorMsg="Please enter your comment">
+                                    </app-field-error-display>
+                                </div>
+                            </div>
+                            
+                            <div class="float-right">
+                                <button class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
+                            <!-- <button class="btn" (click)="reset()">Reset</button>
+                            -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+</div>

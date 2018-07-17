@@ -18,6 +18,7 @@ import { FooterComponent } from './footer/footer.component';
 import { StuffComponent } from './stuff/stuff.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
+import { FieldErrorDisplayComponent } from './field-error-display/field-error-display.component';
 
 const appRoutes: Routes = [
     { path: "home", component: HomeComponent },
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
         FooterComponent,
         StuffComponent,
         BlogComponent,
-        ContactComponent
+        ContactComponent,
+        FieldErrorDisplayComponent
     ],
     imports: [
         AngularFontAwesomeModule,
