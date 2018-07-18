@@ -37,7 +37,7 @@ export class AdminComponent implements OnInit {
 
     getBlogs() {
         return this.http
-            .get('http://localhost:8080/blogs')
+            .get('/blogs')
             .map(res => res, this.result);
     }
     modal(input: any) {
@@ -51,13 +51,13 @@ export class AdminComponent implements OnInit {
     }
     submitBlog(input: any) {
         console.log('new blog', input);
-        return this.http.post('http://localhost:8080/new/blog', input)
+        return this.http.post('/new/blog', input)
             .subscribe(data => { });
     }
     updateContent(input: any) {
 
         console.log('updated', input);
-        var url = 'http://localhost:8080/blog';
+        var url = '/blog';
         return this.http.post(url, input)
             .subscribe(data => { });
     }
