@@ -25,9 +25,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-// app.use(forceDomain({
-//     hostname: 'www.indian-e-visa.org'
-// }));
+app.use(forceDomain({
+    hostname: 'www.indian-e-visa.org'
+}));
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
  app.set('view engine', 'html');
 
@@ -140,7 +140,9 @@ app.post('/new/blog', function(req,res){
     });
 });
 
-
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "dist/index.html"));
+});
 
 
 
