@@ -28,7 +28,8 @@ app.use(bodyParser.json());
 // app.use(forceDomain({
 //     hostname: 'www.indian-e-visa.org'
 // }));
-// app.set('view engine', 'html');
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
+ app.set('view engine', 'html');
 
 app.use(express.static(__dirname + "/dist"));
 app.listen(process.env.PORT || 8080);
