@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 
 
 app.use(forceDomain({
-    hostname: 'www.indian-e-visa.org'
+    hostname: 'rickithadi.com'
 }));
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
  app.set('view engine', 'html');
