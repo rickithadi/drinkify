@@ -29,7 +29,7 @@ import { AdminComponent } from './admin/admin.component';
 
 import { SuccessComponent } from './success/success.component';
 import { AdminServiceService } from './admin-service.service';
-
+import { TabsModule } from "ngx-bootstrap";
 const appRoutes: Routes = [
     { path: "home", component: HomeComponent },
     { path: "contact", component: ContactComponent },
@@ -57,6 +57,7 @@ const appRoutes: Routes = [
         AdminComponent
     ],
     imports: [
+        TabsModule.forRoot(),
         AngularFontAwesomeModule,
         NgPipesModule,
         ModalModule.forRoot(),

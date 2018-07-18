@@ -50,6 +50,10 @@ let transporter = nodemailer.createTransport({
         pass: "Singapore98"
     }
 });
+
+
+
+// send me an email bitch
 app.post("/contact", function(req, res) {
                       var dt                  = new Date();
                       var utcDate             = dt.toUTCString();
@@ -76,7 +80,7 @@ app.post("/contact", function(req, res) {
 });
 
 
-//get blogs
+// get blogs
 app.get("/blogs", function(req, res) {
     //get all checks
     conn
@@ -95,27 +99,30 @@ app.get("/blogs", function(req, res) {
 });
 
 
+// modidy content
 app.post("/blog", function(req, res) {
     console.log("updating", req.body);
 
-    // conn.collection("blogs").updateOne(
-    //     {
-    //         _id: new ObjectId(req.params.id)
-    //     },
-    //     {
-    //         $set: {
-    //             last  : utcDate,
-    //             status: req.params.status
-    //         }
-    //     },
-    //     function(err, doc) {
-    //         if (err) {
-    //             console.log("error", err);
-    //         } else {
-    //             res.status(200).json(res.body);
-    //         }
-    //     }
-    // );
+    conn.collection("blogs").updateOne(
+        {
+            _id: new ObjectId(req.body._id)
+        },
+        {
+            $set: {
+               
+                content: req.body.content
+            }
+        },
+        function(err, doc) { 
+            if (err) {
+                console.log("error", err);
+            } else {
+                console.log('success', doc.modifiedCount);
+                console.log('??', doc.matchedCounted);
+                res.status(200).json(res.body);
+            }
+        }
+    );
 });
 
 
