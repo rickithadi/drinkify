@@ -76,15 +76,7 @@ app.post("/contact", function(req, res) {
 });
 
 
-
-
-
-
-
-
-
 //get blogs
-
 app.get("/blogs", function(req, res) {
     //get all checks
     conn
@@ -100,6 +92,30 @@ app.get("/blogs", function(req, res) {
 
             // conn.close();
         });
+});
+
+
+app.post("/blog", function(req, res) {
+    console.log("updating", req.body);
+
+    // conn.collection("blogs").updateOne(
+    //     {
+    //         _id: new ObjectId(req.params.id)
+    //     },
+    //     {
+    //         $set: {
+    //             last  : utcDate,
+    //             status: req.params.status
+    //         }
+    //     },
+    //     function(err, doc) {
+    //         if (err) {
+    //             console.log("error", err);
+    //         } else {
+    //             res.status(200).json(res.body);
+    //         }
+    //     }
+    // );
 });
 
 
