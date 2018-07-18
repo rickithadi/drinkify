@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+    user: string;
+    pass: string;
     constructor(private admin: AdminServiceService, private route: Router) { }
 
     ngOnInit() {
