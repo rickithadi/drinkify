@@ -1,15 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AdminServiceService } from '../admin-service.service';
+import { Router } from '@angular/router';
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+    constructor(private admin: AdminServiceService, private route: Router) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
+    loginCheck(user: string, pass: string) {
+        if (user == 'admin' && pass == '123xyz') {
+            this.admin.loginSuccess();
+            this.route.navigate(["admin"]);
+        }
+        else {
+            alert('piss off');
+        }
+    }
 }
