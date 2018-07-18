@@ -28,7 +28,7 @@ export class BlogComponent implements OnInit {
     }
     getBlogs() {
         return this.http
-            .get('http://localhost:8080/blogs')
+            .get('/blogs')
             .map(res => res, this.result);
     }
     modal(input: any) {
