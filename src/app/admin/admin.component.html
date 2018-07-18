@@ -33,7 +33,7 @@
                   <div class="modal-body">
                       <textarea class="col-md-12" rows="20" style="min-width: 100%"[(ngModel)]=d.content>   
              </textarea>
-             <button class="col-md-4 ; pull-right ; btn btn-primary" (click)="updateContent(d)"> Modify </button>
+             <button class="col-md-4 ; pull-right ; btn btn-primary" (click)="updateContent(d) ; modalRef.hide()"> Modify </button>
                   </div>
               </ng-template>
 
@@ -68,7 +68,7 @@
                       <br>
                       <textarea rows="20" style="min-width:70%" [(ngModel)]=blog.content></textarea> 
                   </div>
-                  <button class="pull-right" (click)="submitBlog(blog)"> Submit </button>
+                  <button class="pull-right" (click)="submitBlog(blog) "> Submit </button>
                   
               </div>
           </tab>

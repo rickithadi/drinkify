@@ -6,14 +6,14 @@
 <div *ngFor="let r of result | reverse " class="text-center ; e" (click)="openModal(template)" >
     <ng-template #template>
         <div class="modal-header">
-            <h4 class="modal-title pull-left"> {{r.name}} </h4>
+            <h4 class="modal-title pull-left"> <h1>{{r.name}}</h1> on {{r.created_at.slice(0,-12)}}</h4>
                       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                           <span aria-hidden="true">&times;</span>
                       </button>
 
         </div>
         <hr>
-        <div class="modal-body">
+        <div class="modal-body ; text-secondary">
             <div [innerHTML]='r.content'>
             </div>
         </div>
