@@ -1,26 +1,6 @@
 
 
     
-
-<!-- <div *ngFor="let r of result | reverse " class="text-center ; e" (click)="openModal(template)" >
-     <ng-template #template>
-     <div class="modal-header">
-     <h4 class="modal-title pull-left"> {{r.name}} </h4>
-     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-     <span aria-hidden="true">&times;</span>
-     </button>
-
-     </div>
-     <hr>
-     <div class="modal-body">
-     <div [innerHTML]='r.content'>
-     </div>
-     </div>
-     </ng-template>
-     <h2>{{r.name}}</h2>
-     <h3>{{r.short_desc}}</h3>
-     </div> -->
-     
      <tabset [justified]="true">
           <tab heading="Blogs" id="tab1">
           <div class="table-responsive">
@@ -73,5 +53,23 @@
           </div>
           </tab>
           <tab heading="New Blog">
+              <br>
+              <br>
+              <div class="col-md-12 ; mx-auto">
+                  <label> name</label>
+                  <input type="text" [(ngModel)]=blog.name>
+                  <label> short name</label>
+                  <input type="text" [(ngModel)]=blog.short_name>
+                  <label> description</label>
+                  <input type="text" [(ngModel)]=blog.short_desc>
+                  <br>
+                  <div class="col-md-12">
+                      <br>
+                      <br>
+                      <textarea rows="20" style="min-width:70%" [(ngModel)]=blog.content></textarea> 
+                  </div>
+                  <button class="pull-right" (click)="submitBlog(blog)"> Submit </button>
+                  
+              </div>
           </tab>
           </tabset> 

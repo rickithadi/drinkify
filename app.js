@@ -124,6 +124,20 @@ app.post("/blog", function(req, res) {
         }
     );
 });
+app.post('/new/blog', function(req,res){
+    var dt                  = new Date();
+    var utcDate             = dt.toUTCString();
+
+    req.body.created_at = utcDate;
+    console.log('new', req.body);  
+
+    conn.collection('blogs').insertOne(req.body, function(err, res){
+        if(err){
+            return console.log('error with blog', err);
+        }
+        console.log('success');
+    });
+});
 
 
 

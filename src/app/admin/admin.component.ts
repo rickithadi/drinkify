@@ -13,10 +13,17 @@ import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
     styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+
     result: any;
     reverse: boolean = false;
     modalRef: BsModalRef;
     localBlogs: any;
+    blog = {
+        name: '',
+        short_name: '',
+        short_desc: '',
+        content: ''
+    }
     constructor(private http: HttpClient,
         private modalService: BsModalService) { }
 
@@ -41,6 +48,11 @@ export class AdminComponent implements OnInit {
     }
     delete(input: any) {
 
+    }
+    submitBlog(input: any) {
+        console.log('new blog', input);
+        return this.http.post('http://localhost:8080/new/blog', input)
+            .subscribe(data => { });
     }
     updateContent(input: any) {
 
