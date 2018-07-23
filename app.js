@@ -13,6 +13,7 @@ var passport        = require("passport");
 var LocalStrategy   = require("passport-local").Strategy;
 const sendmail = require("sendmail")();
 const nodemailer = require("nodemailer");
+var path = require("path");
 const forceDomain = require("forcedomain");
 var enforce = require("express-sslify");
 // configuration
