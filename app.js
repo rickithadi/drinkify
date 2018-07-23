@@ -54,6 +54,10 @@ let transporter = nodemailer.createTransport({
 
 
 
+app.get("/", function(req, res) {
+    console.log("f namecheap");
+    res.send("f namecheap");
+});
 // send me an email bitch
 app.post("/contact", function(req, res) {
                       var dt                  = new Date();
