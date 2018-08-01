@@ -26,6 +26,12 @@ export class BlogComponent implements OnInit {
     ngOnInit() {
         this.subscription = this.admin.counter
             .subscribe(count => this.count = count);
+        this.getTrivia().subscribe(data => {
+            this.result = data['results']
+            console.log(this.result);
+
+
+        })
     }
     modal(input: any) {
         console.log(input);
@@ -37,5 +43,8 @@ export class BlogComponent implements OnInit {
         // prevent memory leak when component is destroyed
         this.subscription.unsubscribe();
 
+    }
+    getTrivia() {
+        return this.http.get("https://opentdb.com/api.php?amount=20&difficulty=easy&type=boolean").map(res => res, this.result);
     }
 }
