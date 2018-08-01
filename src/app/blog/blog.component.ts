@@ -9,16 +9,50 @@ import { AdminServiceService } from '../admin-service.service';
 import { BsModalService } from "ngx-bootstrap/modal";
 import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
 import { Subscription } from 'rxjs/Subscription';
+
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 @Component({
     selector: 'app-blog',
     templateUrl: './blog.component.html',
-    styleUrls: ['./blog.component.css']
+    styleUrls: ['./blog.component.css'],
+
+    animations: [
+        trigger('rotatedState', [
+            state('default', style({ transform: 'rotate(0)' })),
+            state('rotated', style({ transform: 'rotate(360deg)' })),
+            transition('rotated => default',
+                animate('5500ms ease-out')),
+            transition('default => rotated', animate('400ms ease-in'))])
+        , trigger('state', [
+            state('inactive', style({
+                'color': '#606060',
+                'background-color': 'transparent'
+
+
+            })),
+            state('active', style({
+                'color': '#fff',
+                'background-color': '*' // <====
+
+            })),
+            transition('inactive <=> active', animate('100ms ease-out'))
+
+        ])
+    ]
+
+
+
+
+
 })
 export class BlogComponent implements OnInit {
     localBlogs: any;
     result: any;
     modalRef: BsModalRef;
     count: number;
+    colours: string[] = ['chocolate', 'orange', 'yellow', 'DarkSeaGreen', 'chocolate', 'orange', 'yellow', 'DarkSeaGreen']
+    bgColor;
+
     subscription: Subscription;
     constructor(private http: HttpClient, private admin: AdminServiceService, private modalService: BsModalService, ) {
     }
@@ -29,7 +63,7 @@ export class BlogComponent implements OnInit {
         this.getTrivia().subscribe(data => {
             this.result = data['results']
             console.log(this.result);
-
+            this.change();
 
         })
     }
@@ -46,5 +80,8 @@ export class BlogComponent implements OnInit {
     }
     getTrivia() {
         return this.http.get("https://opentdb.com/api.php?amount=20&difficulty=easy&type=boolean").map(res => res, this.result);
+    }
+    change() {
+        this.bgColor = this.colours[this.count];
     }
 }
