@@ -30,8 +30,7 @@ export class StuffComponent implements OnInit {
     }
     getReddit() {
 
-        return this.http.get("https://www.reddit.com/r/AskReddit/search.json?q=oop&sort=new&restrict_sr=1")
-            .map(res => res, this.result);
+        return this.http.get("https://www.reddit.com/r/AskReddit/search.json?q=oop&sort=top&restrict_sr=1")
     }
 
 }

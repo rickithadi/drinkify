@@ -39,8 +39,6 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class QuestionComponent implements OnInit {
     @Input() question: any;
-    colours: string[] = ['red', 'orange', 'yellow', 'green']
-    bgColor;
     constructor(private admin: AdminServiceService, private modalService: NgbModal) { }
     ngOnInit() {
     }
@@ -50,12 +48,17 @@ export class QuestionComponent implements OnInit {
     }
     updateCount() {
         this.admin.incCounter();
-        this.bgColor = this.colours[1];
     }
     openModal(template: TemplateRef<any>) {
         // this.modalRef = this.modalService.show(template);
         this.modalService.open(template, { centered: true });
         this.updateCount();
 
+    }
+    next(input: object, template: TemplateRef<any>) {
+        if ('correct_answer' in input) {
+            this.openModal(template);;
+        }
+        this.updateCount();
     }
 }

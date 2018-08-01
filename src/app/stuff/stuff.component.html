@@ -1,3 +1,5 @@
-{{questions[0].data.selftext | json}}
 
-{{questions[0].data.title | json}}
+<div class="col-md-6" *ngFor="let r of questions">
+    {{r.data.title |json}}
+    <hr/>
+</div>
