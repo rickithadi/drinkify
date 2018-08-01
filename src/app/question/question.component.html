@@ -1,0 +1,21 @@
+
+    
+<div class="container" (click)="openModal(template)">
+    <div class="col-md-12 ; mx-auto">
+    
+    <!-- <h1>{{question.question}}</h1>     -->
+        <div [innerHTML]='question.question' class="text-center">
+            </div>
+        <br/>
+        <hr/>
+        <ng-template #template>
+              <div class="modal-body">
+                <h1 class="secondary ; text-center">{{question.correct_answer}}</h1>
+            </div>
+
+        </ng-template>
+
+</div>
+
+</div>
+

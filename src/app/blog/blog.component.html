@@ -1,27 +1,9 @@
-<br>
-<br>
-<h1 class="text-center"> Sometimes i write things </h1>
-<br>
-<br>
-<div *ngFor="let r of result | reverse " class="text-center ; e" (click)="openModal(template)" >
-    <ng-template #template>
-        <div class="modal-header">
-            <h4 class="modal-title pull-left"> <h1>{{r.name}}</h1> on {{r.created_at.slice(0,-12)}}</h4>
-                      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
 
-        </div>
-        <hr>
-        <div class="modal-body ; text-secondary">
-            <div [innerHTML]='r.content'>
-            </div>
-        </div>
-    </ng-template>
-    <h2>{{r.name}}</h2>
-    <h3>{{r.short_desc}}</h3>
-    <br>
-    <br>
-    <hr>
+
+<div class="col-md-12 ; mx-auto ; text-center" style="height:100%; display:flex; align-items:center;">
+    <div class="col-md-8">
+        
+        <app-question  [question]="result[count]"> </app-question>
+    </div> 
 </div>
- 
+

@@ -36,17 +36,18 @@ body, html {
   background-image: url('/assets/giphy (5).gif');
     background-size: cover;  
   }
- 
-   .avatar {
-    vertical-align: middle;
-    width: 50%;
-    
-    height: 100%;
-    border-radius: 50%;
-}
-   .logo{
-     width: 100%;
-    
-    height: 100%;
-    border-radius: 100%;     vertical-align:middle;
-   }
+    .avatar {
+        vertical-align: middle;
+        width: 50%;
+
+        height: 100%;
+        border-radius: 50%;
+
+    }
+    .logo{
+        width: 100%;
+
+        height: 100%;
+        border-radius: 100%;     vertical-align:middle;
+
+    }

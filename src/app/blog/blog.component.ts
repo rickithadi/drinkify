@@ -5,9 +5,10 @@ import { OrderPipe } from 'ngx-order-pipe';
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/do";
 import "rxjs/Rx";
-
+import { AdminServiceService } from '../admin-service.service';
 import { BsModalService } from "ngx-bootstrap/modal";
 import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
+import { Subscription } from 'rxjs/Subscription';
 @Component({
     selector: 'app-blog',
     templateUrl: './blog.component.html',
@@ -17,18 +18,23 @@ export class BlogComponent implements OnInit {
     localBlogs: any;
     result: any;
     modalRef: BsModalRef;
-    constructor(private http: HttpClient, private modalService: BsModalService, ) { }
+    count: number;
+    subscription: Subscription;
+    constructor(private http: HttpClient, private admin: AdminServiceService, private modalService: BsModalService, ) {
+    }
 
     ngOnInit() {
+        this.subscription = this.admin.counter
+            .subscribe(count => this.count = count);
         this.getBlogs()
             .subscribe(data => {
-                this.result = data
+                this.result = data['results']
                 console.log(this.result);
             })
     }
     getBlogs() {
         return this.http
-            .get('/blogs')
+            .get('https://opentdb.com/api.php?amount=30&difficulty=easy&type=boolean')
             .map(res => res, this.result);
     }
     modal(input: any) {
@@ -36,5 +42,10 @@ export class BlogComponent implements OnInit {
     }
     openModal(template: TemplateRef<any>) {
         this.modalRef = this.modalService.show(template);
+    }
+    ngOnDestroy() {
+        // prevent memory leak when component is destroyed
+        this.subscription.unsubscribe();
+          
     }
 }
