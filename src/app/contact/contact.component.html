@@ -1,66 +1,19 @@
-<div class="container u-marg--b50">
-    
-    <div class="text-center ">
-        <br>
-        <br>
-        <h1>Hit me up</h1>
-        <br>
-    </div>
-
-
-    <section>
-        <br>
-        <div id="icons-wrapper">
-            <div class="col-lg-10 col-sm-6 mr-auto ml-auto">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-
-                        <form class="form-horizontal" [formGroup]="form">
-
-                            <div class="form-group" [ngClass]="displayFieldCss('name')">
-                                <div class="col-sm-12">
-                                    <label for="name" class="control-label required">Name</label>
-                                    <input type="text" id="name" class="form-control" formControlName="name">
-                                    <app-field-error-display [displayError]="isFieldValid('name')" errorMsg="Please enter your name">
-                                    </app-field-error-display>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group" [ngClass]="displayFieldCss('email')">
-                                <div class="col-sm-12">
-                                    <label for="email" class="control-label required">Email</label>
-                                    <input type="text" id="email" class="form-control" formControlName="email">
-                                    <app-field-error-display [displayError]="isFieldValid('email')" errorMsg="Please enter your email">
-                                    </app-field-error-display>
-                                </div>
-                            </div>
-                            <div class="form-group" [ngClass]="displayFieldCss('ref')">
-                                <div class="col-sm-12">
-                                    <label for="ref" class="control-label required">Subject</label>
-                                    <input type="text" id="ref" class="form-control" formControlName="ref">
-                                    <app-field-error-display [displayError]="isFieldValid('ref')" errorMsg="Please enter your name">
-                                    </app-field-error-display>
-                                </div>
-                            </div>
-
-                            <div class="form-group" [ngClass]="displayFieldCss('comment')">
-                                <div class="col-sm-12">
-                                    <label for="comment" class="control-label required">What's up</label>
-                                    <textarea type="text" id="comment" class="form-control" formControlName="comment" rows="4"></textarea>
-                                    <app-field-error-display [displayError]="isFieldValid('comment')" errorMsg="Please enter your comment">
-                                    </app-field-error-display>
-                                </div>
-                            </div>
-                            
-                            <div class="float-right">
-                                <button class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
-                            <!-- <button class="btn" (click)="reset()">Reset</button>
-                            -->
-                        </form>
-                    </div>
-                </div>
-            </div>
+<!-- <div>
+     Spin
+     </div> -->
+<div class="container ; mx-auto">
+    <div class="row ">
+        <br/>
+        <div class="col-md-1; text-center  ">
+            <br/> 
+            
+            <h1 class="elem ; text-center">=></h1> 
         </div>
-    </section>
-    <br>
+        
+      </div>
 </div>
+<br/>
+<br/>
+<div [@state]="state" [style.background-color]="bgColor" (click)="click()">{{bgColor}} anus  </div>
+
+<p [@rotatedState]='state' (click)="animateMe()">I will animate</p>

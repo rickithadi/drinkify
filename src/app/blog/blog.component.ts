@@ -26,16 +26,6 @@ export class BlogComponent implements OnInit {
     ngOnInit() {
         this.subscription = this.admin.counter
             .subscribe(count => this.count = count);
-        this.getBlogs()
-            .subscribe(data => {
-                this.result = data['results']
-                console.log(this.result);
-            })
-    }
-    getBlogs() {
-        return this.http
-            .get('https://opentdb.com/api.php?amount=30&difficulty=easy&type=boolean')
-            .map(res => res, this.result);
     }
     modal(input: any) {
         console.log(input);
@@ -46,6 +36,6 @@ export class BlogComponent implements OnInit {
     ngOnDestroy() {
         // prevent memory leak when component is destroyed
         this.subscription.unsubscribe();
-          
+
     }
 }

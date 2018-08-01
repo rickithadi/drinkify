@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import {
     FormGroup,
@@ -12,66 +13,58 @@ import { NgForm } from "@angular/forms";
 @Component({
     selector: 'app-contact',
     templateUrl: './contact.component.html',
-    styleUrls: ['./contact.component.css']
+    styleUrls: ['./contact.component.css'],
+
+    animations: [
+        trigger('rotatedState', [
+            state('default', style({ transform: 'rotate(0)' })),
+            state('rotated', style({ transform: 'rotate(360deg)' })),
+            transition('rotated => default',
+                animate('5500ms ease-out')),
+            transition('default => rotated', animate('400ms ease-in'))])
+        , trigger('state', [
+            state('inactive', style({
+                'color': '#606060',
+                'background-color': 'transparent'
+
+
+            })),
+            state('active', style({
+                'color': '#fff',
+                'background-color': '*' // <====
+
+            })),
+            transition('inactive <=> active', animate('100ms ease-out'))
+
+        ])
+    ]
 })
 export class ContactComponent implements OnInit {
+    state: string = 'default';
+    stop: boolean = false;
     payload: {};
     form: FormGroup;
-
+    bgColor = 'pink';
     constructor(private http: HttpClient,
         private formBuilder: FormBuilder,
         private route: Router) { }
 
     ngOnInit() {
-        this.form = this.formBuilder.group({
-            name: [null, Validators.required],
-            email: [null, [Validators.required, Validators.email]],
-            ref: [null],
-            comment: [null, Validators.required]
-        });
+        this.animateMe();
     }
-    isFieldValid(field: string) {
-        return !this.form.get(field).valid && this.form.get(field).touched;
+    click() {
+        this.bgColor = 'orange';
     }
 
-    displayFieldCss(field: string) {
-        return {
-            "has-error": this.isFieldValid(field),
-            "has-feedback": this.isFieldValid(field)
-        };
+    animateMe() {
+
+
+        this.state = (this.state === 'default' ? 'rotated' : 'default');
+
+
     }
 
-    onSubmit() {
-        console.log(this.form);
-        if (this.form.valid) {
-            this.payload = this.form.value;
 
-            console.log("form submitted", this.payload);
-            this.route.navigate(["/success"]);
-            return this.http
-                .post("/contact", this.payload)
-                .subscribe(data => { });
-            // this.sendComment(JSON.stringify(this.form);
-        } else {
-            this.validateAllFormFields(this.form);
-        }
-    }
-
-    validateAllFormFields(formGroup: FormGroup) {
-        Object.keys(formGroup.controls).forEach(field => {
-            console.log(field);
-            const control = formGroup.get(field);
-            if (control instanceof FormControl) {
-                control.markAsTouched({ onlySelf: true });
-            } else if (control instanceof FormGroup) {
-                this.validateAllFormFields(control);
-            }
-        });
-    }
-
-    reset() {
-        this.form.reset();
-    }
 
 
 }
