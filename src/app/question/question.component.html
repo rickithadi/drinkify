@@ -1,22 +1,26 @@
 
     
-<div class="container" (click)="next(question,template)">
+<div class="container" (click)="next(this.question,template)">
     <div class="col-md-12 ; mx-auto">
-{{question | json}}    
     <!-- <h1>{{question.question}}</h1>     -->
         <div [innerHTML]='question.question' class="text-center">
             </div>
         <br/>
         <hr/>
         <ng-template #template>
-              <div class="modal-body">
-                <h1 class="secondary ; text-center">{{question.correct_answer}}</h1>
+              <div class="modal-body" (click)=up()>
+                  anus
+                  {{question | json}}
+                  <div [innerHTML]='this.question.correct_answer' class="text-center">
+                      
+                  </div>
+ 
             </div>
 
         </ng-template>
 
 </div>
 
-
 </div>
 
+<button (click)=up()>up 1 </button>

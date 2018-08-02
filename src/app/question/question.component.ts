@@ -4,7 +4,7 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 import { AdminServiceService } from '../admin-service.service';
 import { BsModalService } from "ngx-bootstrap/modal";
 import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
     selector: 'app-question',
     templateUrl: './question.component.html',
@@ -42,23 +42,31 @@ export class QuestionComponent implements OnInit {
     constructor(private admin: AdminServiceService, private modalService: NgbModal) { }
     ngOnInit() {
     }
-    modal(input: any) {
-        console.log(input);
+    // modal(input: any) {
+    //     console.log(input);
 
-    }
+    // }
+
     updateCount() {
         this.admin.incCounter();
     }
     openModal(template: TemplateRef<any>) {
         // this.modalRef = this.modalService.show(template);
         this.modalService.open(template, { centered: true });
-        this.updateCount();
 
     }
     next(input: object, template: TemplateRef<any>) {
+        console.log('checkking', input)
         if ('correct_answer' in input) {
-            this.openModal(template);;
+            console.log(input.correct_answer);
+            this.openModal(template);
         }
+        else {
+            this.updateCount();
+        }
+    }
+    up() {
         this.updateCount();
     }
+
 }

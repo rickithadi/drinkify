@@ -111,8 +111,7 @@ export class BlogComponent implements OnInit {
         //     this.result = this.result.concat(this.questions2);
         //     // console.log(this.result);
         // })
-
-        this.bang();
+        console.log('init', this.result);
     }
 
     ngOnDestroy() {
