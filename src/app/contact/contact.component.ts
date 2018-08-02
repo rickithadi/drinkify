@@ -16,44 +16,44 @@ import { NgForm } from "@angular/forms";
     styleUrls: ['./contact.component.css'],
 
     animations: [
-        trigger('rotatedState', [
-            state('default', style({ transform: 'rotate(0)' })),
-            state('rotated', style({ transform: 'rotate(360deg)' })),
-            transition('rotated => default',
-                animate('5500ms ease-out')),
-            transition('default => rotated', animate('400ms ease-in'))])
-        , trigger('state', [
+        trigger('state', [
             state('inactive', style({
-                'color': '#606060',
-                'background-color': 'transparent'
+                'background-color': 'blue',
+                'transform': 'rotate(0)'
 
 
             })),
             state('active', style({
-                'color': '#fff',
-                'background-color': '*' // <====
+                'background-color': 'pink',
+                'transform': '{{transform}}'
+                // 'transform': '*'
+                // transform: 'rotate(360deg)'
 
-            })),
-            transition('inactive <=> active', animate('100ms ease-out'))
+            }),
+                { params: { 'transform': 'rotate(180deg)' } }),
+
+            transition('inactive <=> active', animate('1000ms ease-out'))
 
         ])
     ]
 })
 export class ContactComponent implements OnInit {
-    state: string = 'default';
     stop: boolean = false;
-    payload: {};
-    form: FormGroup;
+    penis: number = 200
+    transform: string = 'rotate(240deg)';
     bgColor = 'pink';
+    state = 'active';
     constructor(private http: HttpClient,
-        private formBuilder: FormBuilder,
         private route: Router) { }
 
     ngOnInit() {
-        this.animateMe();
     }
     click() {
-        this.bgColor = 'orange';
+        this.penis = this.penis + 30;
+        let rotation: string = 'rotate(' + this.penis + 'deg)';
+        this.transform = rotation;
+        this.state = this.state == 'active' ? 'inactive' : 'active';
+        console.log(this.transform);
     }
 
     animateMe() {
