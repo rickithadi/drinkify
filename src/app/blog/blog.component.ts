@@ -26,7 +26,7 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
         , trigger('state', [
             state('inactive', style({
                 'color': '#606060',
-                'background-color': 'transparent'
+                'background-color': 'pink'
 
 
             })),

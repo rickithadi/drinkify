@@ -56,7 +56,7 @@ export class QuestionComponent implements OnInit {
         this.admin.incCounter();
     }
     openModal(template: TemplateRef<any>) {
-        this.mr = this.modalService.open(template, { centered: true });
+        this.mr = this.modalService.open(template, { size: 'lg', centered: true });
 
         // this.mr = this.modalService.open(template, { centered: true });
 

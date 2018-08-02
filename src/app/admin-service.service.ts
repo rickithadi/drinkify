@@ -15,26 +15,6 @@ export class AdminServiceService {
     count: number = 0;
     public isLoggedIn: boolean = false;
     constructor(private http: HttpClient) {
-        // console.log(this.reddit1);
-        // this.getTrivia().subscribe(data => {
-        //     this.questions = data['results']
-
-        //     // console.log(this.questions);
-        // })
-        // this.getReddit('changemyview').subscribe(data => {
-        //     this.questions1 = data['data'].children;
-
-        //     this.questions1 = this.parseReddit(this.questions1);
-        //     // console.log(this.questions1);
-        // })
-        // this.getReddit('unpopularopinion').subscribe(data => {
-        //     this.questions2 = data['data'].children;
-        //     this.questions2 = this.parseReddit(this.questions2);
-        //     // console.log(this.questions2);
-        // })
-
-
-        // this.parseReddit(this.questions1);
     }
     parseReddit(input: any) {
         var parsed = [];

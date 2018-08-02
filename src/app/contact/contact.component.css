@@ -15,41 +15,21 @@ p {
     font-size:1.5em;
       
 }
-.elem{
-    height:100%;
-    width:50%;
-    vertical-align:middle;;
-    background-color:blue;
-    transition-property: transform;
-    transition-duration: 20s;
+div {
+    width: 100%;
+    height: 100;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
 
 }
-.elem:hover {
-    animation-name: rotate;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-
-}
-
-@keyframes rotate {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
-
-} i {
+ i {
       margin: 0 3px;
       font-size: 280px;
       text-decoration: none;
-      color: #black; }
-    
-/* @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } } */
-/* @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } } */
-/* @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } } */
-
-/* .elem:hover { */
-/*     -webkit-animation:spin 1.5s linear infinite; */
-/*     -moz-animation:spin 1.5s linear infinite; */
-/*     animation:spin 1.5s linear infinite; */
-
-/* } */
-a:active img {-webkit-transform: rotate(600deg);-webkit-transition: -webkit-transform 2s ease-out;}
+      }

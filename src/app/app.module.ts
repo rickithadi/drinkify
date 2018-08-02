@@ -31,6 +31,7 @@ import { SuccessComponent } from './success/success.component';
 import { AdminServiceService } from './admin-service.service';
 import { TabsModule } from "ngx-bootstrap";
 import { QuestionComponent } from './question/question.component';
+import { PunishmentComponent } from './punishment/punishment.component';
 const appRoutes: Routes = [
     { path: "home", component: HomeComponent },
     { path: "contact", component: ContactComponent },
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
         SuccessComponent,
         LoginComponent,
         AdminComponent,
-        QuestionComponent
+        QuestionComponent,
+        PunishmentComponent
     ],
     imports: [
         TabsModule.forRoot(),
