@@ -8,19 +8,18 @@
         <br/>
         <hr/>
         <ng-template #template>
-              <div class="modal-body" (click)=up()>
-                  anus
-                  {{question | json}}
-                  <div [innerHTML]='this.question.correct_answer' class="text-center">
+              <div class="modal-body" (click)="up()">
+                  <div [innerHTML]="question['correct_answer']" class="text-center">
                       
                   </div>
  
             </div>
 
+            <button  class="btn btn-outline-primary btn-sm btn-block" (click)="up()">Next </button>
         </ng-template>
 
 </div>
 
 </div>
 
-<button (click)=up()>up 1 </button>
+<!-- <button (click)=up()>up 1 </button> -->

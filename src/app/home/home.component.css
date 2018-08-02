@@ -1,10 +1,5 @@
 a { text-decoration: none; margin: 0 10px; }
-body, html {
-  
-  margin : 0;
-  padding: 0; }
 
-  
   
   @keyframes animatedBackground {
       from { background-position:100px 280px; }
@@ -51,3 +46,15 @@ body, html {
         border-radius: 100%;     vertical-align:middle;
 
     }
+    .container
+    {
+        min-height: 70%;
+        min-height: -webkit-calc(100% - 3000px);
+        min-height: -moz-calc(100% - 3000px);
+        min-height: calc(100% - 3000px);
+
+    }
+
+
+    .footer { position: fixed; bottom: 0; horizontal-align:middle;width:100%; }
+
