@@ -44,13 +44,14 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 })
 export class BlogComponent implements OnInit {
     result: any = [];
+    state = 'active';
     done: any = [];
     questions: any;
     questions1: any;
     questions2: any;
     count: number;
     colourIndex: number = 0;
-    colours: string[] = ['chocolate', 'orange', 'yellow', 'DarkSeaGreen', 'chocolate', 'orange', 'yellow', 'DarkSeaGreen']
+    colours: string[] = ['chocolate', 'orange', 'LightSlateGray', 'DarkSeaGreen', 'chocolate', 'orange', 'Navy', 'DarkSeaGreen']
     bgColor = 'DarkSeaGreen';
 
     subscription: Subscription;
