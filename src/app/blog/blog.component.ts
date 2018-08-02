@@ -51,7 +51,7 @@ export class BlogComponent implements OnInit {
     count: number;
     colourIndex: number = 0;
     colours: string[] = ['chocolate', 'orange', 'yellow', 'DarkSeaGreen', 'chocolate', 'orange', 'yellow', 'DarkSeaGreen']
-    bgColor;
+    bgColor = 'DarkSeaGreen';
 
     subscription: Subscription;
     constructor(private http: HttpClient, private admin: AdminServiceService) {
@@ -72,6 +72,8 @@ export class BlogComponent implements OnInit {
             this.questions1 = this.admin.parseReddit(this.questions1);
 
             this.result = this.result.concat(this.questions1);
+
+            this.result = this.shuffle(this.result);
             console.log(this.result);
         })
         this.admin.getReddit('unpopularopinion').subscribe(data => {
@@ -79,6 +81,8 @@ export class BlogComponent implements OnInit {
             this.questions2 = this.admin.parseReddit(this.questions2);
 
             this.result = this.result.concat(this.questions2);
+
+            this.result = this.shuffle(this.result);
             // this.done = this.shuffle(this.result);
             // console.log(this.done);
             console.log(this.result);
@@ -87,30 +91,7 @@ export class BlogComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.subscription = this.admin.counter
-        //     .subscribe(count => this.count = count);
 
-        // this.admin.getTrivia()
-        //     .subscribe(data => {
-        //         this.questions = data['results']
-        //         this.result = this.result.concat(this.questions);
-        //         // console.log(this.result);
-        //     })
-        // this.admin.getReddit('changemyview').subscribe(data => {
-        //     this.questions1 = data['data'].children;
-
-        //     this.questions1 = this.admin.parseReddit(this.questions1);
-
-        //     this.result = this.result.concat(this.questions1);
-        //     // console.log(this.result);
-        // })
-        // this.admin.getReddit('unpopularopinion').subscribe(data => {
-        //     this.questions2 = data['data'].children;
-        //     this.questions2 = this.admin.parseReddit(this.questions2);
-
-        //     this.result = this.result.concat(this.questions2);
-        //     // console.log(this.result);
-        // })
         console.log('init', this.result);
     }
 
