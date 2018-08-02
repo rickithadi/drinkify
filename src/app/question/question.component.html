@@ -2,7 +2,7 @@
     
 <div class="container" (click)="next(question,template)">
     <div class="col-md-12 ; mx-auto">
-    
+{{question | json}}    
     <!-- <h1>{{question.question}}</h1>     -->
         <div [innerHTML]='question.question' class="text-center">
             </div>

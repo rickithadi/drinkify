@@ -21,12 +21,13 @@ export class AlwaysAuthGuard implements CanActivate {
 export class OnlyLoggedInGuard implements CanActivate {
     constructor(private admin: AdminServiceService) { }
     canActivate() {
-        console.log('OnlyLoggedInGuard');
-        if (this.admin.check()) {
-            return true;
-        } else {
-            window.alert('you dont have permission');
-            return false;
-        }
+        return true;
+        // console.log('OnlyLoggedInGuard');
+        // if (this.admin.check()) {
+        //     return true;
+        // } else {
+        //     window.alert('you dont have permission');
+        //     return false;
+        // }
     }
 }

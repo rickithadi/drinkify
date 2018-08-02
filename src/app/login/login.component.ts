@@ -14,13 +14,13 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
     }
 
-    loginCheck(user: string, pass: string) {
-        if (user == 'admin' && pass == '123xyz') {
-            this.admin.loginSuccess();
-            this.route.navigate(["admin"]);
-        }
-        else {
-            alert('piss off');
-        }
-    }
+    // loginCheck(user: string, pass: string) {
+    //     if (user == 'admin' && pass == '123xyz') {
+    //         this.admin.loginSuccess();
+    //         this.route.navigate(["admin"]);
+    //     }
+    //     else {
+    //         alert('piss off');
+    //     }
+    // }
 }
