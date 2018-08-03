@@ -1,0 +1,35 @@
+{
+    "short_name": "Drinkify",
+    "name": "Alcohol and associates",
+    "start_url": "/",
+
+    "theme_color": "#f48c5b",
+    "background_color": "#ffffff",
+
+    "display": "standalone",
+    "orientation": "landscape"
+
+    /// Add icons in next section
+   "icons": [
+        {
+            "src": "/assets/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+                  
+        },
+        {
+            "src": "/assets/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+                  
+        },
+   {
+            "src": "/assets/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+                  
+        }
+        /// and so on....
+            
+    ]
+}
