@@ -4,12 +4,10 @@
     "start_url": "/",
 
     "theme_color": "#f48c5b",
-    "background_color": "#ffffff",
 
     "display": "standalone",
-    "orientation": "landscape"
+    "orientation": "landscape",
 
-    /// Add icons in next section
    "icons": [
         {
             "src": "/assets/apple-touch-icon.png",
@@ -29,7 +27,6 @@
             "type": "image/png"
                   
         }
-        /// and so on....
             
     ]
 }
