@@ -50,12 +50,13 @@ export class BlogComponent implements OnInit {
     questions: any;
     questions1: any;
     show: boolean;
-
-    countryList: any;
     questionsArrow: any;
+    question2Arrow: any;
     questions2: any;
     count: number;
-    public apiHost: string = '../../assets/never.json'
+    public neverHost: string = '../../assets/never.json'
+    public picoloHost = '../../assets/picolo.json'
+    picolo: any;
     colourIndex: number = 0;
     colours: string[] = ['chocolate', 'orange', 'LightSlateGray', 'DarkSeaGreen', 'chocolate', 'orange', 'Navy', 'DarkSeaGreen']
     bgColor = 'DarkSeaGreen';
@@ -64,6 +65,7 @@ export class BlogComponent implements OnInit {
     constructor(private http: HttpClient, private admin: AdminServiceService) {
         this.subscription = this.admin.counter
             .subscribe(count => this.count = count);
+
         this.subscription = this.admin.show
             .subscribe(show => this.show = show);
 
@@ -73,17 +75,15 @@ export class BlogComponent implements OnInit {
                 this.result = this.result.concat(this.questions);
                 // console.log(this.result);
                 this.result = this.shuffle(this.result);
-                // console.log('final', this.result);
             })
         this.admin.getReddit('changemyview').subscribe(data => {
             this.questions1 = data['data'].children;
-
             this.questions1 = this.admin.parseReddit(this.questions1);
 
             this.result = this.result.concat(this.questions1);
 
             this.result = this.shuffle(this.result);
-            // console.log(this.result);
+
         })
         this.admin.getReddit('unpopularopinion').subscribe(data => {
             this.questions2 = data['data'].children;
@@ -92,36 +92,66 @@ export class BlogComponent implements OnInit {
             this.result = this.result.concat(this.questions2);
 
             this.result = this.shuffle(this.result);
-            // this.done = this.shuffle(this.result);
-            // console.log(this.done);
-            // console.log(this.result);
+
+            this.result = this.shuffle(this.result);
+
         })
+        this.getAll(this.picoloHost, this.picolo).then(data => {
+            this.picolo = data;
+
+            this.result = this.result.concat(this.picolo);
+            this.result = this.shuffle(this.result);
+        })
+
+
+
+
 
         this.admin.getReddit('askreddit').subscribe(data => {
-            this.questionsArrow = data['data'].children;
+            this.question2Arrow = data['data'].children;
+            this.question2Arrow = this.admin.parseReddit(this.question2Arrow);
 
-            this.questionsArrow = this.admin.parseReddit(this.questionsArrow);
+            this.resultArrow = this.resultArrow.concat(this.question2Arrow);
+
+            this.resultArrow = this.shuffle(this.resultArrow);
+            console.log('fuck 1', this.resultArrow);
+        })
+
+
+
+        this.getAll(this.neverHost, this.questionsArrow).then(data => {
+            this.questionsArrow = data;
 
             this.resultArrow = this.resultArrow.concat(this.questionsArrow);
-
-            // console.log(this.resultArrow);
-            this.getAll();
-            this.resultArrow = this.resultArrow.concat(this.countryList);
             this.resultArrow = this.shuffle(this.resultArrow);
-            // console.log('final', this.resultArrow);
 
+            console.log('fuck 2', this.resultArrow);
         })
-        this.getAll();
-        // this.result = this.result.concat(this.countryList);
-        this.resultArrow = this.shuffle(this.resultArrow);
-        // console.log('final', this.resultArrow);
+
 
 
     }
 
     ngOnInit() {
-        this.check();
-        // console.log('init', this.result);
+        // this.subscription = this.admin.counter
+        //     .subscribe(count => this.count = count);
+
+        // this.subscription = this.admin.show
+        //     .subscribe(show => this.show = show);
+
+    }
+    tf() {
+
+        this.result = this.shuffle(this.result);
+
+        this.resultArrow = this.shuffle(this.resultArrow);
+
+
+
+        this.cunt = this.result.concat(this.picolo);
+        this.arrowcunt = this.resultArrow.concat(this.countryList);
+        console.log('cunt', this.cunt)
+        console.log('arrow cunt', this.arrowcunt)
     }
 
     ngOnDestroy() {
@@ -162,10 +192,10 @@ export class BlogComponent implements OnInit {
         return a;
 
     }
-    getAll(): Promise<Object> {
-        return this.http.get(this.apiHost, { responseType: 'text' })
+    getAll(input: any, assignTo: any) {
+        return this.http.get(input)
             .toPromise()
-            .then(response => this.extractData(response)).catch((err) => {
+            .then(response => this.extractData(response, assignTo)).catch((err) => {
                 console.log(err);
 
 
@@ -173,30 +203,17 @@ export class BlogComponent implements OnInit {
 
 
     }
-    extractData(res: any) {
-        this.countryList = JSON.parse(res);
+    extractData(res: any, input: any) {
+        input = res;
         let body = res;
-        // console.log(this.countryList);
+        console.log(input);
         return body || {};
 
-
-    }
-    check() {
-        if (this.show === true && this.count % 2 == 0) {
-            let add5 = this.count + 5;
-            if (this.count === add5) {
-                this.show = !this.show
-            }
-        }
-        else if (this.show === false && this.count % 2 == 0) {
-            let add5 = this.count + 5;
-            if (this.count === add5) {
-
-                this.show = !this.show
-            }
-        }
 
     }
 
 
 }
+
+
+
