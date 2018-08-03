@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { AdminServiceService } from '../admin-service.service';
 @Component({
@@ -7,6 +7,7 @@ import { AdminServiceService } from '../admin-service.service';
     styleUrls: ['./punishment.component.css']
 })
 export class PunishmentComponent implements OnInit {
+    @Input() hide?: boolean;
     skipCount = 0;
     punishments = ['One sip', 'Half a cup', 'Finish your cup', 'Full cup', 'Shot']
     punishments2 = ['Half a cup', 'Finish your cup', 'Full cup', 'Shot']
@@ -27,6 +28,10 @@ export class PunishmentComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log('hidden', this.hide);
+        if (this.hide == true) {
+            this.disable = true;
+        }
         this.current = this.chooseOne(this.current, this.punishments);
         // this.index = this.randomIntFromInterval(0, this.punishments.length);
         // this.current = this.punishments[this.index];

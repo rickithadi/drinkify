@@ -39,6 +39,7 @@ import { NgbModal, NgbModalRef, ModalDismissReasons, NgbActiveModal } from '@ng-
 })
 export class QuestionComponent implements OnInit {
     @Input() question: any;
+    hide: boolean = true;
     public mr: NgbModalRef;
     constructor(private admin: AdminServiceService, private modalService: NgbModal
         // , private mr: NgbModalRef

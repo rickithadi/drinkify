@@ -58,7 +58,7 @@ export class BlogComponent implements OnInit {
     public picoloHost = '../../assets/picolo.json'
     picolo: any;
     colourIndex: number = 0;
-    colours: string[] = ['chocolate', 'orange', 'LightSlateGray', 'DarkSeaGreen', 'chocolate', 'orange', 'Navy', 'DarkSeaGreen']
+    colours: string[] = ['chocolate', 'orange', 'LightSlateGray', 'DarkSeaGreen', 'chocolate', 'orange', 'pink', 'DarkSeaGreen']
     bgColor = 'DarkSeaGreen';
 
     subscription: Subscription;
@@ -139,19 +139,6 @@ export class BlogComponent implements OnInit {
         // this.subscription = this.admin.show
         //     .subscribe(show => this.show = show);
 
-    }
-    tf() {
-
-        this.result = this.shuffle(this.result);
-
-        this.resultArrow = this.shuffle(this.resultArrow);
-
-
-
-        this.cunt = this.result.concat(this.picolo);
-        this.arrowcunt = this.resultArrow.concat(this.countryList);
-        console.log('cunt', this.cunt)
-        console.log('arrow cunt', this.arrowcunt)
     }
 
     ngOnDestroy() {

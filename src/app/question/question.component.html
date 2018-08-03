@@ -22,10 +22,12 @@
 
 </div>
 <ng-template #template>
-    <div class="modal-body" (click)="up()">
+    <div class="modal-body ;text-center; text-primary" (click)="up()">
         <div [innerHTML]="question['correct_answer']" class="text-center">
             
         </div>
+        <br/>
+        <app-punishment [hide]="true"></app-punishment>
     </div>
 
 

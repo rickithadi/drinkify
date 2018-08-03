@@ -34,12 +34,7 @@ import { QuestionComponent } from './question/question.component';
 import { PunishmentComponent } from './punishment/punishment.component';
 const appRoutes: Routes = [
     { path: "home", component: HomeComponent },
-    { path: "contact", component: ContactComponent },
-    { path: "stuff", component: StuffComponent }
-    , { path: "auaucyh", component: LoginComponent }
-    , { path: "success", component: SuccessComponent },
-    { path: "blog", component: BlogComponent }
-    , { path: "admin", component: AdminComponent, canActivate: [OnlyLoggedInGuard] }
+    { path: "play", component: BlogComponent }
     ,
     { path: "**", component: HomeComponent }
 
