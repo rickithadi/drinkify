@@ -49,6 +49,7 @@ export class BlogComponent implements OnInit {
     done: any = [];
     questions: any;
     questions1: any;
+    show: boolean;
 
     countryList: any;
     questionsArrow: any;
@@ -63,6 +64,8 @@ export class BlogComponent implements OnInit {
     constructor(private http: HttpClient, private admin: AdminServiceService) {
         this.subscription = this.admin.counter
             .subscribe(count => this.count = count);
+        this.subscription = this.admin.show
+            .subscribe(show => this.show = show);
 
         this.admin.getTrivia()
             .subscribe(data => {
@@ -117,7 +120,7 @@ export class BlogComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        this.check();
         // console.log('init', this.result);
     }
 
@@ -133,6 +136,14 @@ export class BlogComponent implements OnInit {
             this.colourIndex = this.colourIndex + 1
         }
         else {
+            if (this.show == false) {
+                this.admin.setShowTrue();
+            }
+            else if (this.show == true) {
+                this.admin.setShowFalse();
+            }
+
+            // this.show = !this.show;
             this.colourIndex = 0;
 
             this.bgColor = this.colours[this.colourIndex];
@@ -168,6 +179,22 @@ export class BlogComponent implements OnInit {
         // console.log(this.countryList);
         return body || {};
 
+
+    }
+    check() {
+        if (this.show === true && this.count % 2 == 0) {
+            let add5 = this.count + 5;
+            if (this.count === add5) {
+                this.show = !this.show
+            }
+        }
+        else if (this.show === false && this.count % 2 == 0) {
+            let add5 = this.count + 5;
+            if (this.count === add5) {
+
+                this.show = !this.show
+            }
+        }
 
     }
 

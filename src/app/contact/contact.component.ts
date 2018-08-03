@@ -115,7 +115,6 @@ export class ContactComponent implements OnInit {
         this.admin.incCounter();
     }
     skip() {
-        this.admin.pussy(1);
         this.updateCount();
     }
     openModal(template: TemplateRef<any>) {

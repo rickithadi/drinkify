@@ -62,11 +62,14 @@ export class PunishmentComponent implements OnInit {
             this.toh = this.chooseOne(this.toh, this.punishments4);
             this.disable = true;
             console.log('disable', this.disable);
+
+            this.admin.setShowFalse();
         }
         else {
             console.log('no more');
             this.skipCount = 0
             this.disable = false;
+            // this.admin.setShow();
         }
 
         this.skipCount = this.skipCount + 1;

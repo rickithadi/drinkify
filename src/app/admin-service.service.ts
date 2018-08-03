@@ -9,19 +9,13 @@ export class AdminServiceService {
     questions: any;
     questions1: any;
     questions2: any;
-    punishments = ['One sip', 'Half a cup', 'Finish your cup', 'Full cup', 'Shot']
-    punishments2 = ['Half a cup', 'Finish your cup', 'Full cup', 'Shot']
-    punishments3 = ['Finish your cup', 'Full cup', 'Shot']
-    punishments4 = ['Full cup', '2 Shots', 'shot']
     index: number;
-    current: string;
-    double: string;
-    triple: string;
-    toh: string; finalQlist: any;
     private counterSource = new BehaviorSubject<number>(0);
     counter = this.counterSource.asObservable();
     count: number = 0;
-    public isLoggedIn: boolean = false;
+
+    private showSource = new BehaviorSubject<boolean>(false);
+    show = this.showSource.asObservable();
     constructor(private http: HttpClient) {
     }
     parseReddit(input: any) {
@@ -67,5 +61,16 @@ export class AdminServiceService {
         return Math.floor(Math.random() * (max - min + 1) + min);
 
     }
+    setShowTrue() {
 
+        this.showSource.next(true);
+        console.log('show currently at', this.show)
+        return this.show;
+    }
+    setShowFalse() {
+
+        this.showSource.next(false);
+        console.log('show currently at', this.show)
+        return this.show;
+    }
 }
