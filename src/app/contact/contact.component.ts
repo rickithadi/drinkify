@@ -99,7 +99,7 @@ export class ContactComponent implements OnInit {
 
         })
         this.getAll();
-        this.result = this.result.concat(this.countryList);
+        // this.result = this.result.concat(this.countryList);
         this.result = this.shuffle(this.result);
         console.log('final', this.result);
 

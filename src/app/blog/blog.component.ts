@@ -44,12 +44,17 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 })
 export class BlogComponent implements OnInit {
     result: any = [];
+    resultArrow: any = [];
     state = 'active';
     done: any = [];
     questions: any;
     questions1: any;
+
+    countryList: any;
+    questionsArrow: any;
     questions2: any;
     count: number;
+    public apiHost: string = '../../assets/never.json'
     colourIndex: number = 0;
     colours: string[] = ['chocolate', 'orange', 'LightSlateGray', 'DarkSeaGreen', 'chocolate', 'orange', 'Navy', 'DarkSeaGreen']
     bgColor = 'DarkSeaGreen';
@@ -89,6 +94,26 @@ export class BlogComponent implements OnInit {
             console.log(this.result);
         })
 
+        this.admin.getReddit('askreddit').subscribe(data => {
+            this.questionsArrow = data['data'].children;
+
+            this.questionsArrow = this.admin.parseReddit(this.questionsArrow);
+
+            this.resultArrow = this.result.concat(this.questionsArrow);
+
+            console.log(this.resultArrow);
+            this.getAll();
+            this.resultArrow = this.result.concat(this.countryList);
+            this.resultArrow = this.shuffle(this.resultArrow);
+            console.log('final', this.resultArrow);
+
+        })
+        this.getAll();
+        // this.result = this.result.concat(this.countryList);
+        this.resultArrow = this.shuffle(this.resultArrow);
+        console.log('final', this.resultArrow);
+
+
     }
 
     ngOnInit() {
@@ -126,4 +151,25 @@ export class BlogComponent implements OnInit {
         return a;
 
     }
+    getAll(): Promise<Object> {
+        return this.http.get(this.apiHost, { responseType: 'text' })
+            .toPromise()
+            .then(response => this.extractData(response)).catch((err) => {
+                console.log(err);
+
+
+            });
+
+
+    }
+    extractData(res: any) {
+        this.countryList = JSON.parse(res);
+        let body = res;
+        console.log(this.countryList);
+        return body || {};
+
+
+    }
+
+
 }

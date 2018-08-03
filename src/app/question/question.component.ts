@@ -58,6 +58,7 @@ export class QuestionComponent implements OnInit {
     openModal(template: TemplateRef<any>) {
         this.mr = this.modalService.open(template, { size: 'lg', centered: true });
 
+        // this.modalService.open(template, { size: 'lg', centered: true });
         // this.mr = this.modalService.open(template, { centered: true });
 
     }

@@ -7,20 +7,26 @@
             </div>
         <br/>
         <hr/>
-        <ng-template #template>
-              <div class="modal-body" (click)="up()">
-                  <div [innerHTML]="question['correct_answer']" class="text-center">
-                      
-                  </div>
-<app-punishment></app-punishment> 
-            </div>
+        <!-- <ng-template #template>
+             <div class="modal-body" (click)="up()">
+             <div [innerHTML]="question['correct_answer']" class="text-center">
+             
+             </div>
+             </div>
 
 
-           <!-- <button  class="btn btn-outline-primary btn-sm btn-block" (click)="up()">Next </button> -->
-        </ng-template>
-
+             </ng-template>
+        -->
 </div>
 
 </div>
+<ng-template #template>
+    <div class="modal-body" (click)="up()">
+        <div [innerHTML]="question['correct_answer']" class="text-center">
+            
+        </div>
+    </div>
 
-<!-- <button (click)=up()>up 1 </button> -->
+
+</ng-template>
+
