@@ -23,6 +23,8 @@ var app             = express();
 
 
 app.use(cors());
+
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(bodyParser.json());
 
  app.set('view engine', 'html');

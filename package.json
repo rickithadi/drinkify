@@ -6,7 +6,7 @@
     "ng": "ng",
     "postinstall": "ng build --aot --prod",
     "pwa": "ng build --prod && sw-precache --root=dist --config=precache-config.js",
-    "start": "node app.js ",
+    "start": "node app.js && ng build --prod && sw-precache --root=dist --config=precache-config.js",
     "build": "npm install && ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
