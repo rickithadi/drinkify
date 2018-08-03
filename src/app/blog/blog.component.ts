@@ -68,9 +68,9 @@ export class BlogComponent implements OnInit {
             .subscribe(data => {
                 this.questions = data['results']
                 this.result = this.result.concat(this.questions);
-                console.log(this.result);
+                // console.log(this.result);
                 this.result = this.shuffle(this.result);
-                console.log('final', this.result);
+                // console.log('final', this.result);
             })
         this.admin.getReddit('changemyview').subscribe(data => {
             this.questions1 = data['data'].children;
@@ -80,7 +80,7 @@ export class BlogComponent implements OnInit {
             this.result = this.result.concat(this.questions1);
 
             this.result = this.shuffle(this.result);
-            console.log(this.result);
+            // console.log(this.result);
         })
         this.admin.getReddit('unpopularopinion').subscribe(data => {
             this.questions2 = data['data'].children;
@@ -91,7 +91,7 @@ export class BlogComponent implements OnInit {
             this.result = this.shuffle(this.result);
             // this.done = this.shuffle(this.result);
             // console.log(this.done);
-            console.log(this.result);
+            // console.log(this.result);
         })
 
         this.admin.getReddit('askreddit').subscribe(data => {
@@ -99,26 +99,26 @@ export class BlogComponent implements OnInit {
 
             this.questionsArrow = this.admin.parseReddit(this.questionsArrow);
 
-            this.resultArrow = this.result.concat(this.questionsArrow);
+            this.resultArrow = this.resultArrow.concat(this.questionsArrow);
 
-            console.log(this.resultArrow);
+            // console.log(this.resultArrow);
             this.getAll();
-            this.resultArrow = this.result.concat(this.countryList);
+            this.resultArrow = this.resultArrow.concat(this.countryList);
             this.resultArrow = this.shuffle(this.resultArrow);
-            console.log('final', this.resultArrow);
+            // console.log('final', this.resultArrow);
 
         })
         this.getAll();
         // this.result = this.result.concat(this.countryList);
         this.resultArrow = this.shuffle(this.resultArrow);
-        console.log('final', this.resultArrow);
+        // console.log('final', this.resultArrow);
 
 
     }
 
     ngOnInit() {
 
-        console.log('init', this.result);
+        // console.log('init', this.result);
     }
 
     ngOnDestroy() {
@@ -140,7 +140,7 @@ export class BlogComponent implements OnInit {
     }
     bang() {
         this.result = this.shuffle(this.result);
-        console.log(this.result);
+        // console.log(this.result);
     }
     shuffle(a) {
         for (let i = a.length - 1; i > 0; i--) {
@@ -165,7 +165,7 @@ export class BlogComponent implements OnInit {
     extractData(res: any) {
         this.countryList = JSON.parse(res);
         let body = res;
-        console.log(this.countryList);
+        // console.log(this.countryList);
         return body || {};
 
 

@@ -12,19 +12,40 @@
 .e:hover h2{
     color:white;
 }
+.html{
+    margin:0px
+}
 .e:hover h3{
     color:white;
 }
-div {
-    width: 100%;
-    height: 100px;
+.footer {
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 0px; }
+  footer p:first-child {
+    font-size: 20px; }
+  footer p {
+    color: #ffffff; }
+  footer .social-icons {
+    margin-top:1px; }
+    footer .social-icons a {
+      margin: 0 3px;
+      font-size: 28px;
+      text-decoration: none;
+      color: #cccccc; }
+      footer .social-icons a:hover {
+        color: #ffffff; }
 
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+/* div { */
+/*     width: 100%; */
+/*     height: 100px; */
 
-    margin: auto;
+/*     position: absolute; */
+/*     top:0; */
+/*     bottom: 0; */
+/*     left: 0; */
+/*     right: 0; */
 
-}
+/*     margin: auto; */
+
+/* } */

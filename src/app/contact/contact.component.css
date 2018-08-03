@@ -15,19 +15,19 @@ p {
     font-size:1.5em;
       
 }
-div {
-    width: 100%;
-    height: 100;
+/* div { */
+/*     width: 100%; */
+/*     height: 100%; */
 
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+/*     position: absolute; */
+/*     top:0; */
+/*     bottom: 0; */
+/*     left: 0; */
+/*     right: 0; */
 
-    margin: auto;
+/*     margin: auto; */
 
-}
+/* } */
  i {
       margin: 0 3px;
       font-size: 280px;

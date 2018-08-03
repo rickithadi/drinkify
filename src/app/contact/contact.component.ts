@@ -1,12 +1,12 @@
 import { BsModalService } from "ngx-bootstrap/modal";
 import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
 import { NgbModal, NgbModalRef, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Component, OnInit } from '@angular/core';
 
 import { AdminServiceService } from '../admin-service.service';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
+import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import {
     FormGroup,
@@ -61,10 +61,12 @@ import { NgForm } from "@angular/forms";
     ]
 })
 export class ContactComponent implements OnInit {
+    @Input() question: any;
     stop: boolean = false;
+    public mr: NgbModalRef;
     penis: number = 0
     transform: string = 'rotate(240deg)';
-    bgColor = 'pink';
+    bgColor = 'transparent';
     public apiHost: string = '../../assets/never.json'
     countryList: any;
     count: number;
@@ -77,31 +79,10 @@ export class ContactComponent implements OnInit {
 
     subscription: Subscription;
     state = 'active';
-    thing = 'active';
+    thing = 'inactive';
     constructor(private http: HttpClient
+        , private modalService: NgbModal
         , private admin: AdminServiceService, private route: Router) {
-
-        this.subscription = this.admin.counter
-            .subscribe(count => this.count = count);
-
-        this.admin.getReddit('askreddit').subscribe(data => {
-            this.questions1 = data['data'].children;
-
-            this.questions1 = this.admin.parseReddit(this.questions1);
-
-            this.result = this.result.concat(this.questions1);
-
-            console.log(this.result);
-            this.getAll();
-            this.result = this.result.concat(this.countryList);
-            this.result = this.shuffle(this.result);
-            console.log('final', this.result);
-
-        })
-        this.getAll();
-        // this.result = this.result.concat(this.countryList);
-        this.result = this.shuffle(this.result);
-        console.log('final', this.result);
 
     }
 
@@ -113,7 +94,7 @@ export class ContactComponent implements OnInit {
         let rotation: string = 'rotate(' + this.penis + 'deg)';
         this.transform = rotation;
         this.state = this.state == 'active' ? 'inactive' : 'active';
-        this.change();
+        // this.change();
         console.log(this.transform);
     }
 
@@ -130,9 +111,26 @@ export class ContactComponent implements OnInit {
         return Math.floor(Math.random() * (max - min + 1) + min);
 
     }
-    question() {
-        console.log('quest')
+    updateCount() {
+        this.admin.incCounter();
     }
+    openModal(template: TemplateRef<any>) {
+        this.updateCount();
+        this.mr = this.modalService.open(template, { size: 'lg', centered: true });
+        // this.updateCount();
+        // this.modalService.open(template, { size: 'lg', centered: true });
+        // this.mr = this.modalService.open(template, { centered: true });
+
+    }
+    closeModal() {
+        this.mr.close();
+    }
+
+    up() {
+        this.updateCount();
+        this.closeModal();
+    }
+
 
     change() {
         if (this.colourIndex < 8) {
@@ -146,26 +144,4 @@ export class ContactComponent implements OnInit {
             this.bgColor = this.colours[this.colourIndex];
         }
     }
-    getAll(): Promise<Object> {
-        return this.http.get(this.apiHost, { responseType: 'text' })
-            .toPromise()
-            .then(response => this.extractData(response)).catch((err) => {
-                console.log(err);
-
-
-            });
-
-
-    }
-    extractData(res: any) {
-        this.countryList = JSON.parse(res);
-        let body = res;
-        console.log(this.countryList);
-        return body || {};
-
-
-    }
-
-
-
 }
