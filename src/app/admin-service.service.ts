@@ -9,7 +9,15 @@ export class AdminServiceService {
     questions: any;
     questions1: any;
     questions2: any;
-    finalQlist: any;
+    punishments = ['One sip', 'Half a cup', 'Finish your cup', 'Full cup', 'Shot']
+    punishments2 = ['Half a cup', 'Finish your cup', 'Full cup', 'Shot']
+    punishments3 = ['Finish your cup', 'Full cup', 'Shot']
+    punishments4 = ['Full cup', '2 Shots', 'shot']
+    index: number;
+    current: string;
+    double: string;
+    triple: string;
+    toh: string; finalQlist: any;
     private counterSource = new BehaviorSubject<number>(0);
     counter = this.counterSource.asObservable();
     count: number = 0;
@@ -55,6 +63,9 @@ export class AdminServiceService {
         // array2 = array2.concat(array1);
         // console.log('teehee', array2);
     }
+    randomIntFromInterval(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
 
+    }
 
 }

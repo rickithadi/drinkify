@@ -1,1 +1,19 @@
-{{current | json}}
+    
+<div class="row" style="width=100%">
+
+    <div class="col-md-10 ; max-auto; text-center">
+
+<h4 class="text-danger">{{current}}</h4>
+
+<h4 class="text-danger">{{double}}</h4>
+<h4 class="text-danger">{{triple}}</h4>
+<h4 class="text-danger">{{toh}}</h4>
+</div>
+<div class="col-md-2">
+    
+    <button class="btn btn-primary btn-lg ; pull-right" (click)="skip()" *ngIf="!disable">skip</button>
+    <br/>
+</div>
+<br/>
+</div>
+<br/>

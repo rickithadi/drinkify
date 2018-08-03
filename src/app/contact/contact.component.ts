@@ -114,6 +114,10 @@ export class ContactComponent implements OnInit {
     updateCount() {
         this.admin.incCounter();
     }
+    skip() {
+        this.admin.pussy(1);
+        this.updateCount();
+    }
     openModal(template: TemplateRef<any>) {
         this.updateCount();
         this.mr = this.modalService.open(template, { size: 'lg', centered: true });
