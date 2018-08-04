@@ -21,9 +21,6 @@ import { FooterComponent } from './footer/footer.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
 import { NgPipesModule } from 'ngx-pipes';
-
-import { AdminComponent } from './admin/admin.component';
-
 import { AdminServiceService } from './admin-service.service';
 import { TabsModule } from "ngx-bootstrap";
 import { QuestionComponent } from './question/question.component';
