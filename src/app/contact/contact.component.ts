@@ -90,7 +90,7 @@ export class ContactComponent implements OnInit {
     ngOnInit() {
     }
     click() {
-        this.penis = this.randomIntFromInterval(360, 900);
+        this.penis = this.randomIntFromInterval(660, 900);
         let rotation: string = 'rotate(' + this.penis + 'deg)';
         this.transform = rotation;
         this.state = this.state == 'active' ? 'inactive' : 'active';
