@@ -1,5 +1,6 @@
+
 {
-   
+ 
     "name": "Alcohol and associates",
 
     "short_name": "Drinkify",
@@ -13,7 +14,9 @@
     "orientation": "landscape",
 
    "icons": [
-        {
+
+
+      {
             "src": "/assets/apple-touch-icon.png",
             "sizes": "180x180",
             "type": "image/png"
@@ -42,6 +45,9 @@
             "type": "image/png"
         }
  
-            
-    ]
+
+
+],
+
+
 }
