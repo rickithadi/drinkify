@@ -9,6 +9,7 @@
     "description":"Alcohol and associates",
 
     "theme_color": "#f48c5b",
+    "background_color": "#ffffff",
 
     "display": "standalone",
     "orientation": "landscape",
