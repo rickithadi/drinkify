@@ -12,22 +12,18 @@ import { HttpModule } from "@angular/http";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { AngularFontAwesomeModule } from "angular-font-awesome";
 import {
-    AppComponent, AlwaysAuthGuard,
+    AppComponent,
     OnlyLoggedInGuard
 } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
-import { StuffComponent } from './stuff/stuff.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
-import { FieldErrorDisplayComponent } from './field-error-display/field-error-display.component';
 import { NgPipesModule } from 'ngx-pipes';
-import { LoginComponent } from './login/login.component';
 
 import { AdminComponent } from './admin/admin.component';
 
-import { SuccessComponent } from './success/success.component';
 import { AdminServiceService } from './admin-service.service';
 import { TabsModule } from "ngx-bootstrap";
 import { QuestionComponent } from './question/question.component';
@@ -45,13 +41,8 @@ const appRoutes: Routes = [
         NavbarComponent,
         HomeComponent,
         FooterComponent,
-        StuffComponent,
         BlogComponent,
         ContactComponent,
-        FieldErrorDisplayComponent,
-        SuccessComponent,
-        LoginComponent,
-        AdminComponent,
         QuestionComponent,
         PunishmentComponent
     ],
@@ -69,7 +60,7 @@ const appRoutes: Routes = [
         BrowserModule,
         RouterModule.forRoot(appRoutes)
     ],
-    providers: [AdminServiceService, AlwaysAuthGuard, OnlyLoggedInGuard],
+    providers: [AdminServiceService, OnlyLoggedInGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
