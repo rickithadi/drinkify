@@ -1,8 +1,11 @@
 {
-    "short_name": "Drinkify",
    
     "name": "Alcohol and associates",
+
+    "short_name": "Drinkify",
     "start_url": "/",
+
+    "description":"drinking gamified",
 
     "theme_color": "#f48c5b",
 
