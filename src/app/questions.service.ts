@@ -9,6 +9,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 export class QuestionsService {
 
     arrowQuestions: any[] = [];
+    triviaCat: any[] = [];
     constructor(private http: HttpClient) {
     }
 
@@ -16,8 +17,17 @@ export class QuestionsService {
         this.arrowQuestions = input;
         console.log('set to', this.arrowQuestions);
     }
+    setcat(input: any) {
+        this.triviaCat = input;
+        console.log('set to', this.triviaCat);
+    }
     getQ() {
+        console.log('returning arrow', this.arrowQuestions)
         return this.arrowQuestions;
+    }
+
+    getCat() {
+        return this.triviaCat;;
     }
 
 }

@@ -7,11 +7,11 @@
         <div class="col-sm">
         </div>
         <div class="btn-group btn-group-lg ; col-md-4; mx-auto" >
-            <label class="btn btn-primary" [(ngModel)]="radioModel"
+            <label class="btn btn-info" [(ngModel)]="radioModel"
                    btnRadio="Left" tabindex="0" role="button" (click)="level1()">Chill</label>
-            <label class="btn btn-primary" [(ngModel)]="radioModel"
-                   btnRadio="Middle" tabindex="0" role="button" (click)="level2()">Mild</label>
-            <label class="btn btn-primary" [(ngModel)]="radioModel"
+            <label class="btn btn-info" [(ngModel)]="radioModel"
+                   btnRadio="Middle" tabindex="0" role="button" (click)="level2()">Casual</label>
+            <label class="btn btn-info" [(ngModel)]="radioModel"
                    btnRadio="Right" tabindex="0" role="button" (click)="level3()">Lit</label>
         </div>
 
@@ -32,3 +32,13 @@
             </ng-multiselect-dropdown>
                </form>
     </div>
+    <br/>
+    <br/>
+    <div class="container">
+        
+    <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
+    <br/>
+    <br/>
+
+    <button class="btn btn-info pull-right" (click)="continue()">Continue</button>
+</div>

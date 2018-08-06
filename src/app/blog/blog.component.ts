@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { QuestionsService } from '../questions.service';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { OrderPipe } from 'ngx-order-pipe';
@@ -62,77 +63,78 @@ export class BlogComponent implements OnInit {
     bgColor = 'DarkSeaGreen';
 
     subscription: Subscription;
-    constructor(private http: HttpClient, private admin: AdminServiceService) {
+    constructor(private q: QuestionsService, private http: HttpClient, private admin: AdminServiceService) {
         this.subscription = this.admin.counter
             .subscribe(count => this.count = count);
 
         this.subscription = this.admin.show
             .subscribe(show => this.show = show);
 
-        this.admin.getTrivia()
-            .subscribe(data => {
-                this.questions = data['results']
-                this.result = this.result.concat(this.questions);
-                // console.log(this.result);
-                this.result = this.shuffle(this.result);
-            })
-        this.admin.getReddit('changemyview').subscribe(data => {
-            this.questions1 = data['data'].children;
-            this.questions1 = this.admin.parseReddit(this.questions1);
+        // this.admin.getTrivia()
+        //     .subscribe(data => {
+        //         this.questions = data['results']
+        //         this.result = this.result.concat(this.questions);
+        //         // console.log(this.result);
+        //         this.result = this.shuffle(this.result);
+        //     })
+        // this.admin.getReddit('changemyview').subscribe(data => {
+        //     this.questions1 = data['data'].children;
+        //     this.questions1 = this.admin.parseReddit(this.questions1);
 
-            this.result = this.result.concat(this.questions1);
+        //     this.result = this.result.concat(this.questions1);
 
-            this.result = this.shuffle(this.result);
+        //     this.result = this.shuffle(this.result);
 
-        })
-        this.admin.getReddit('unpopularopinion').subscribe(data => {
-            this.questions2 = data['data'].children;
-            this.questions2 = this.admin.parseReddit(this.questions2);
+        // })
+        // this.admin.getReddit('unpopularopinion').subscribe(data => {
+        //     this.questions2 = data['data'].children;
+        //     this.questions2 = this.admin.parseReddit(this.questions2);
 
-            this.result = this.result.concat(this.questions2);
+        //     this.result = this.result.concat(this.questions2);
 
-            this.result = this.shuffle(this.result);
+        //     this.result = this.shuffle(this.result);
 
-            this.result = this.shuffle(this.result);
+        //     this.result = this.shuffle(this.result);
 
-        })
-        this.getAll(this.picoloHost, this.picolo).then(data => {
-            this.picolo = data;
+        // })
+        // this.getAll(this.picoloHost, this.picolo).then(data => {
+        //     this.picolo = data;
 
-            this.result = this.result.concat(this.picolo);
-            this.result = this.shuffle(this.result);
-        })
-
-
+        //     this.result = this.result.concat(this.picolo);
+        //     this.result = this.shuffle(this.result);
+        // })
 
 
 
-        this.admin.getReddit('askreddit').subscribe(data => {
-            this.question2Arrow = data['data'].children;
-            this.question2Arrow = this.admin.parseReddit(this.question2Arrow);
-
-            this.resultArrow = this.resultArrow.concat(this.question2Arrow);
-
-            this.resultArrow = this.shuffle(this.resultArrow);
-            console.log('fuck 1', this.resultArrow);
-        })
 
 
+        // this.admin.getReddit('askreddit').subscribe(data => {
+        //     this.question2Arrow = data['data'].children;
+        //     this.question2Arrow = this.admin.parseReddit(this.question2Arrow);
 
-        this.getAll(this.neverHost, this.questionsArrow).then(data => {
-            this.questionsArrow = data;
+        //     this.resultArrow = this.resultArrow.concat(this.question2Arrow);
 
-            this.resultArrow = this.resultArrow.concat(this.questionsArrow);
-            this.resultArrow = this.shuffle(this.resultArrow);
+        //     this.resultArrow = this.shuffle(this.resultArrow);
+        //     console.log('fuck 1', this.resultArrow);
+        // })
 
-            console.log('fuck 2', this.resultArrow);
-        })
+
+
+        // this.getAll(this.neverHost, this.questionsArrow).then(data => {
+        //     this.questionsArrow = data;
+
+        //     this.resultArrow = this.resultArrow.concat(this.questionsArrow);
+        //     this.resultArrow = this.shuffle(this.resultArrow);
+
+        //     console.log('fuck 2', this.resultArrow);
+        // })
 
 
 
     }
 
     ngOnInit() {
+        this.resultArrow = this.q.getQ();
         // this.subscription = this.admin.counter
         //     .subscribe(count => this.count = count);
 

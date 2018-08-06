@@ -11,6 +11,7 @@ import { Routes } from "@angular/router";
 import { HttpModule } from "@angular/http";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { AngularFontAwesomeModule } from "angular-font-awesome";
+import { Ng5SliderModule } from 'ng5-slider';
 import {
     AppComponent,
     OnlyLoggedInGuard
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
     ],
     imports: [
         TabsModule.forRoot(),
+        Ng5SliderModule,
         ButtonsModule.forRoot(),
         NgMultiSelectDropDownModule.forRoot(),
         AngularFontAwesomeModule,

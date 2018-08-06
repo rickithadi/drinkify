@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+
+import { Router } from '@angular/router';
 import { QuestionsService } from '../questions.service';
+import { Options } from 'ng5-slider';
 import "rxjs/Rx";
 import { Subscription } from 'rxjs/Subscription';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -10,6 +13,10 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
     styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+    value: number = 2; options: Options = {
+        floor: 0, ceil: 5
+        , showSelectionBar: true
+    };
     radioModel = 'Middle';
     data: any[] = [];
     never: any[] = [];
@@ -80,11 +87,12 @@ export class SettingsComponent implements OnInit {
         id: 32, name: "Entertainment: Cartoon & Animations"
     }
     ];
-    constructor(private http: HttpClient, private q: QuestionsService, private fb: FormBuilder) {
+    constructor(private route: Router, private http: HttpClient, private q: QuestionsService, private fb: FormBuilder) {
     }
 
     ngOnInit() {
         this.assign();
+        this.level2();
         this.ddList = [{
             id: 9, name: "General Knowledge"
         }, {
@@ -138,7 +146,8 @@ export class SettingsComponent implements OnInit {
 
         this.selectedItems = [];
         this.dropdownSettings = {
-            singleSelection: false, idField: 'id', textField: 'name', selectAllText: 'Select All', unSelectAllText: 'UnSelect All', itemsShowLimit: 3, allowSearchFilter: true
+            singleSelection: false, idField: 'id', textField: 'name', selectAllText: 'Select All', unSelectAllText: 'UnSelect All', itemsShowLimit: 3, allowSearchFilter: false
+            , maxHeight: '100'
         };
         this.myForm = this.fb.group({
             city: [this.selectedItems]
@@ -245,5 +254,12 @@ export class SettingsComponent implements OnInit {
         } else {
             this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
         }
+    }
+    continue() {
+        console.log(this.value);
+        console.log(this.myForm.value);
+        this.q.setcat(this.myForm.value.city);
+
+        this.route.navigate(["play"]);
     }
 }

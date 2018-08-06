@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     }
     play() {
 
-        this.route.navigate(["play"]);
+        this.route.navigate(["settings"]);
 
     }
     setup() {
