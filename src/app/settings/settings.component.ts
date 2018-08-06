@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { QuestionsService } from '../questions.service';
-
 import "rxjs/Rx";
 import { Subscription } from 'rxjs/Subscription';
-
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 @Component({
     selector: 'app-settings',
@@ -14,24 +13,137 @@ export class SettingsComponent implements OnInit {
     radioModel = 'Middle';
     data: any[] = [];
     never: any[] = [];
+    disabled = false; ShowFilter = false; limitSelection = false;
     rabak: any = [];
     alcohol: any = [];
     awkward: any = [];
     dirty: any = [];
     goodie: any = [];
-
+    myForm: FormGroup;
+    selectedItems = [];
+    dropdownSettings = {};
     public neverString: any = '../../assets/questions/never/never.json';
     public rabakString: any = '../../assets/questions/never/rabak.json';
     public alcoholString: any = '../../assets/questions/never/alcohol.json';
     public awkwardString: any = '../../assets/questions/never/awkward.json';
     public dirtyString: any = '../../assets/questions/never/dirty.json';
     public goodieString: any = '../../assets/questions/never/goodie.json';
-
-    constructor(private http: HttpClient, private q: QuestionsService) {
+    selectedCategories = [];
+    ddList = [];
+    trivia_categories = [{
+        id: 9, name: "General Knowledge"
+    }, {
+        id: 10, name: "Entertainment: Books"
+    }, {
+        id: 11, name: "Entertainment: Film"
+    }, {
+        id: 12, name: "Entertainment: Music"
+    }, {
+        id: 13, name: "Entertainment: Musicals & Theatres"
+    }, {
+        id: 14, name: "Entertainment: Television"
+    }, {
+        id: 15, name: "Entertainment: Video Games"
+    }, {
+        id: 16, name: "Entertainment: Board Games"
+    }, {
+        id: 17, name: "Science & Nature"
+    }, {
+        id: 18, name: "Science: Computers"
+    }, {
+        id: 19, name: "Science: Mathematics"
+    }, {
+        id: 20, name: "Mythology"
+    }, {
+        id: 21, name: "Sports"
+    }, {
+        id: 22, name: "Geography"
+    }, {
+        id: 23, name: "History"
+    }, {
+        id: 24, name: "Politics"
+    }, {
+        id: 25, name: "Art"
+    }, {
+        id: 26, name: "Celebrities"
+    }, {
+        id: 27, name: "Animals"
+    }, {
+        id: 28, name: "Vehicles"
+    }, {
+        id: 29, name: "Entertainment: Comics"
+    }, {
+        id: 30, name: "Science: Gadgets"
+    }, {
+        id: 31, name: "Entertainment: Japanese Anime & Manga"
+    }, {
+        id: 32, name: "Entertainment: Cartoon & Animations"
+    }
+    ];
+    constructor(private http: HttpClient, private q: QuestionsService, private fb: FormBuilder) {
     }
 
     ngOnInit() {
         this.assign();
+        this.ddList = [{
+            id: 9, name: "General Knowledge"
+        }, {
+            id: 10, name: "Entertainment: Books"
+        }, {
+            id: 11, name: "Entertainment: Film"
+        }, {
+            id: 12, name: "Entertainment: Music"
+        }, {
+            id: 13, name: "Entertainment: Musicals & Theatres"
+        }, {
+            id: 14, name: "Entertainment: Television"
+        }, {
+            id: 15, name: "Entertainment: Video Games"
+        }, {
+            id: 16, name: "Entertainment: Board Games"
+        }, {
+            id: 17, name: "Science & Nature"
+        }, {
+            id: 18, name: "Science: Computers"
+        }, {
+            id: 19, name: "Science: Mathematics"
+        }, {
+            id: 20, name: "Mythology"
+        }, {
+            id: 21, name: "Sports"
+        }, {
+            id: 22, name: "Geography"
+        }, {
+            id: 23, name: "History"
+        }, {
+            id: 24, name: "Politics"
+        }, {
+            id: 25, name: "Art"
+        }, {
+            id: 26, name: "Celebrities"
+        }, {
+            id: 27, name: "Animals"
+        }, {
+            id: 28, name: "Vehicles"
+        }, {
+            id: 29, name: "Entertainment: Comics"
+        }, {
+            id: 30, name: "Science: Gadgets"
+        }, {
+            id: 31, name: "Entertainment: Japanese Anime & Manga"
+        }, {
+            id: 32, name: "Entertainment: Cartoon & Animations"
+        }
+        ];
+
+        this.selectedItems = [];
+        this.dropdownSettings = {
+            singleSelection: false, idField: 'id', textField: 'name', selectAllText: 'Select All', unSelectAllText: 'UnSelect All', itemsShowLimit: 3, allowSearchFilter: true
+        };
+        this.myForm = this.fb.group({
+            city: [this.selectedItems]
+        });
+
     }
 
     shuffle(a) {
@@ -121,4 +233,17 @@ export class SettingsComponent implements OnInit {
         return this.data;
     }
 
+    onItemSelect(item: any) {
+        console.log('onItemSelect', item);
+    } onSelectAll(items: any) {
+        console.log('onSelectAll', items);
+    } toogleShowFilter() {
+        this.ShowFilter = !this.ShowFilter; this.dropdownSettings = Object.assign({}, this.dropdownSettings, { allowSearchFilter: this.ShowFilter });
+    } handleLimitSelection() {
+        if (this.limitSelection) {
+            this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: 2 });
+        } else {
+            this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
+        }
+    }
 }

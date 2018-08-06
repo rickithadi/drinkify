@@ -2,10 +2,11 @@
 
 <div class="container">
     <br/>
+    <br/>
     <div class="row">
         <div class="col-sm">
         </div>
-        <div class="btn-group btn-group-lg ; col-md-4; mx-auto">
+        <div class="btn-group btn-group-lg ; col-md-4; mx-auto" >
             <label class="btn btn-primary" [(ngModel)]="radioModel"
                    btnRadio="Left" tabindex="0" role="button" (click)="level1()">Chill</label>
             <label class="btn btn-primary" [(ngModel)]="radioModel"
@@ -17,4 +18,17 @@
         <div class="col-sm">
         </div>
     </div>
+        <br/>
+        <label class="text-secondary" >Select categories</label>
+        <form [formGroup]="myForm">
+            <ng-multiselect-dropdown
+                name="city"
+                [placeholder]="'Select Categories'"
+                [data]="ddList"
+                formControlName="city"
+                [disabled]="disabled"
+                [settings]="dropdownSettings"
+                (onSelect)="onItemSelect($event)">
+            </ng-multiselect-dropdown>
+               </form>
     </div>

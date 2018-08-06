@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgModule } from '@angular/core';
@@ -7,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ActivatedRoute, RouterModule, CanActivate } from "@angular/router";
 import { Routes } from "@angular/router";
-
 import { HttpModule } from "@angular/http";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { AngularFontAwesomeModule } from "angular-font-awesome";
@@ -51,6 +51,7 @@ const appRoutes: Routes = [
     imports: [
         TabsModule.forRoot(),
         ButtonsModule.forRoot(),
+        NgMultiSelectDropDownModule.forRoot(),
         AngularFontAwesomeModule,
         NgPipesModule,
         ModalModule.forRoot(),
