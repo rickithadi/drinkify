@@ -135,6 +135,7 @@ export class BlogComponent implements OnInit {
 
     ngOnInit() {
         this.resultArrow = this.q.getQ();
+        this.result = this.q.getCat();
         // this.subscription = this.admin.counter
         //     .subscribe(count => this.count = count);
 

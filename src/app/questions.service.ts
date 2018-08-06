@@ -10,16 +10,17 @@ export class QuestionsService {
 
     arrowQuestions: any[] = [];
     triviaCat: any[] = [];
+    trivia: any[] = [];
     constructor(private http: HttpClient) {
     }
 
     setQ(input: any) {
         this.arrowQuestions = input;
-        console.log('set to', this.arrowQuestions);
+        console.log('set arrow to', this.arrowQuestions);
     }
     setcat(input: any) {
         this.triviaCat = input;
-        console.log('set to', this.triviaCat);
+        console.log('set cat  to', this.triviaCat);
     }
     getQ() {
         console.log('returning arrow', this.arrowQuestions)
@@ -27,7 +28,14 @@ export class QuestionsService {
     }
 
     getCat() {
+        this.extractTrivia(this.triviaCat);
         return this.triviaCat;;
+    }
+    extractTrivia(input: any) {
+        for (let i = 0; i < input.length; i++) {
+            console.log('ex', i)
+            console.log(input[i].id);
+        }
     }
 
 }

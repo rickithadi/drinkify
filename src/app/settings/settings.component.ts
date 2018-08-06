@@ -256,6 +256,13 @@ export class SettingsComponent implements OnInit {
         }
     }
     continue() {
+        if (this.radioModel === 'Middle') {
+            this.level2();;
+        } else if (this.radioModel === 'Left') {
+            this.level1();;
+        } else if (this.radioModel === 'Right') {
+            this.level3();;
+        }
         console.log(this.value);
         console.log(this.myForm.value);
         this.q.setcat(this.myForm.value.city);
