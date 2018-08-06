@@ -25,8 +25,12 @@ import { AdminServiceService } from './admin-service.service';
 import { TabsModule } from "ngx-bootstrap";
 import { QuestionComponent } from './question/question.component';
 import { PunishmentComponent } from './punishment/punishment.component';
+import { SettingsComponent } from './settings/settings.component';
+import { QuestionsService } from './questions.service';
+import { ButtonsModule } from 'ngx-bootstrap';
 const appRoutes: Routes = [
     { path: "home", component: HomeComponent },
+    { path: "settings", component: SettingsComponent },
     { path: "play", component: BlogComponent }
     ,
     { path: "**", component: HomeComponent }
@@ -41,10 +45,12 @@ const appRoutes: Routes = [
         BlogComponent,
         ContactComponent,
         QuestionComponent,
-        PunishmentComponent
+        PunishmentComponent,
+        SettingsComponent
     ],
     imports: [
         TabsModule.forRoot(),
+        ButtonsModule.forRoot(),
         AngularFontAwesomeModule,
         NgPipesModule,
         ModalModule.forRoot(),
@@ -57,7 +63,7 @@ const appRoutes: Routes = [
         BrowserModule,
         RouterModule.forRoot(appRoutes)
     ],
-    providers: [AdminServiceService, OnlyLoggedInGuard],
+    providers: [AdminServiceService, QuestionsService, OnlyLoggedInGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
