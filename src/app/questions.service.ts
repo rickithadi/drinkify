@@ -11,6 +11,7 @@ export class QuestionsService {
     arrowQuestions: any[] = [];
     triviaCat: any[] = [];
     trivia: any[] = [];
+    tResult: any[] = [];
     constructor(private http: HttpClient) {
     }
 
@@ -21,6 +22,11 @@ export class QuestionsService {
     setcat(input: any) {
         this.triviaCat = input;
         console.log('set cat  to', this.triviaCat);
+        this.tResult = this.getCat();
+    }
+    getTrivia() {
+        console.log('reutnr t', this.tResult)
+        return this.tResult;
     }
     getQ() {
         console.log('returning arrow', this.arrowQuestions)
@@ -29,13 +35,43 @@ export class QuestionsService {
 
     getCat() {
         this.extractTrivia(this.triviaCat);
-        return this.triviaCat;;
+        console.log('id list', this.trivia)
+        return this.trivia;
+        // console.log('trivia', this.trivia)
+        // for (let i = 0; i < this.trivia.length; i++) {
+        //     this.getAll(this.trivia[i]).then(data => {
+        //         this.tResult = this.tResult.concat(data.results);
+
+        //         console.log('result', this.tResult)
+        //     })
+        // }
+
     }
     extractTrivia(input: any) {
+        let id = [];
+        let url = '../../assets/questions/opentdb/c';
         for (let i = 0; i < input.length; i++) {
-            console.log('ex', i)
-            console.log(input[i].id);
+            let pushi: string = url + input[i].id + '.json'
+            id.push(pushi)
         }
+        this.trivia = id;
     }
 
+    getAll(input: any) {
+        return this.http.get(input)
+            .toPromise()
+            .then(response => this.extractData(response)).catch((err) => {
+                console.log(err);
+
+
+            });
+
+
+    }
+    extractData(res: any) {
+        let body = res;
+        return body || {};
+
+
+    }
 }

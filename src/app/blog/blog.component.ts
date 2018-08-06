@@ -70,78 +70,12 @@ export class BlogComponent implements OnInit {
         this.subscription = this.admin.show
             .subscribe(show => this.show = show);
 
-        // this.admin.getTrivia()
-        //     .subscribe(data => {
-        //         this.questions = data['results']
-        //         this.result = this.result.concat(this.questions);
-        //         // console.log(this.result);
-        //         this.result = this.shuffle(this.result);
-        //     })
-        // this.admin.getReddit('changemyview').subscribe(data => {
-        //     this.questions1 = data['data'].children;
-        //     this.questions1 = this.admin.parseReddit(this.questions1);
-
-        //     this.result = this.result.concat(this.questions1);
-
-        //     this.result = this.shuffle(this.result);
-
-        // })
-        // this.admin.getReddit('unpopularopinion').subscribe(data => {
-        //     this.questions2 = data['data'].children;
-        //     this.questions2 = this.admin.parseReddit(this.questions2);
-
-        //     this.result = this.result.concat(this.questions2);
-
-        //     this.result = this.shuffle(this.result);
-
-        //     this.result = this.shuffle(this.result);
-
-        // })
-        // this.getAll(this.picoloHost, this.picolo).then(data => {
-        //     this.picolo = data;
-
-        //     this.result = this.result.concat(this.picolo);
-        //     this.result = this.shuffle(this.result);
-        // })
-
-
-
-
-
-        // this.admin.getReddit('askreddit').subscribe(data => {
-        //     this.question2Arrow = data['data'].children;
-        //     this.question2Arrow = this.admin.parseReddit(this.question2Arrow);
-
-        //     this.resultArrow = this.resultArrow.concat(this.question2Arrow);
-
-        //     this.resultArrow = this.shuffle(this.resultArrow);
-        //     console.log('fuck 1', this.resultArrow);
-        // })
-
-
-
-        // this.getAll(this.neverHost, this.questionsArrow).then(data => {
-        //     this.questionsArrow = data;
-
-        //     this.resultArrow = this.resultArrow.concat(this.questionsArrow);
-        //     this.resultArrow = this.shuffle(this.resultArrow);
-
-        //     console.log('fuck 2', this.resultArrow);
-        // })
-
-
-
     }
 
     ngOnInit() {
         this.resultArrow = this.q.getQ();
-        this.result = this.q.getCat();
-        // this.subscription = this.admin.counter
-        //     .subscribe(count => this.count = count);
-
-        // this.subscription = this.admin.show
-        //     .subscribe(show => this.show = show);
-
+        this.triviaBoyz();
+        console.log('finally', this.result);
     }
 
     ngOnDestroy() {
@@ -182,10 +116,10 @@ export class BlogComponent implements OnInit {
         return a;
 
     }
-    getAll(input: any, assignTo: any) {
+    getAll(input: any) {
         return this.http.get(input)
             .toPromise()
-            .then(response => this.extractData(response, assignTo)).catch((err) => {
+            .then(response => this.extractData(response)).catch((err) => {
                 console.log(err);
 
 
@@ -193,12 +127,27 @@ export class BlogComponent implements OnInit {
 
 
     }
-    extractData(res: any, input: any) {
-        input = res;
+    extractData(res: any) {
         let body = res;
-        console.log(input);
         return body || {};
 
+
+    }
+    triviaBoyz() {
+        let cats: string[] = this.q.getCat();
+        console.log('this shit', cats)
+        for (let i = 0; i < cats.length; i++) {
+            this.getAll(cats[i]).then(data => {
+                // hold[i] = data.results;
+                this.result = this.result.concat(data.results);
+                console.log('result', this.result);
+            })
+
+        }
+
+        // console.log('after', new);
+        // this.flatten(hold);;
+        console.log(this.result)
 
     }
 
