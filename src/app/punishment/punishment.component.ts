@@ -20,11 +20,7 @@ export class PunishmentComponent implements OnInit {
     toh: string;
     disable: boolean = false;
     constructor(private admin: AdminServiceService) {
-
-
-
         this.current = this.chooseOne(this.current, this.punishments);
-
     }
 
     ngOnInit() {
@@ -32,7 +28,7 @@ export class PunishmentComponent implements OnInit {
         if (this.hide == true) {
             this.disable = true;
         }
-        this.current = this.chooseOne(this.current, this.punishments);
+        // this.current = this.chooseOne(this.current, this.punishments);
         // this.index = this.randomIntFromInterval(0, this.punishments.length);
         // this.current = this.punishments[this.index];
     }

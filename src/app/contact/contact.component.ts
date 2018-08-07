@@ -47,41 +47,49 @@ import { NgForm } from "@angular/forms";
 export class ContactComponent implements OnInit {
     @Input() question: any;
     stop: boolean = false;
-    public mr: NgbModalRef;
     penis: number = 0
     transform: string = 'rotate(240deg)';
     bgColor = 'transparent';
     public apiHost: string = '../../assets/never.json'
     countryList: any;
-    count: number;
-    questions1: any;
-    questions2: any;
+    Acount: number;
     result: any = [];
     colourIndex: number = 0;
-    colours: string[] = ['chocolate', 'orange', 'LightSlateGray', 'DarkSeaGreen', 'chocolate', 'orange', 'Navy', 'DarkSeaGreen']
+    show: boolean;
 
-
-    subscription: Subscription;
+    public mr: NgbModalRef;
+    Asubscription: Subscription;
+    Bsubscription: Subscription;
     state = 'active';
     thing = 'inactive';
     constructor(private http: HttpClient
         , private modalService: NgbModal
         , private admin: AdminServiceService, private route: Router) {
 
+
+        this.Bsubscription = this.admin.show
+            .subscribe(show => this.show = show);
+
+
     }
 
 
     ngOnInit() {
-        console.log("arrow", this.question)
+        console.log("arrow", this.question);
+        this.click();
     }
     click() {
-        this.penis = this.randomIntFromInterval(660, 900);
+        this.penis = this.randomIntFromInterval(900, 1260);
         let rotation: string = 'rotate(' + this.penis + 'deg)';
         this.transform = rotation;
         this.state = this.state == 'active' ? 'inactive' : 'active';
         // this.change();
         console.log(this.transform);
-        // this.updateCount();
+        this.Asubscription = this.admin.Acounter
+            .subscribe(Acount => this.Acount = Acount);
+
+
+        this.updateCount();
     }
 
     shuffle(a) {
@@ -106,15 +114,14 @@ export class ContactComponent implements OnInit {
         // this.updateCount();
     }
     openModal(template: TemplateRef<any>) {
+        if (this.show === true) {
+            setTimeout(() => {
+                this.mr = this.modalService.open(template, { size: 'lg', centered: true });
 
-        console.log("arrow", this.question)
-        setTimeout(() => {
-            this.mr = this.modalService.open(template, { size: 'lg', centered: true });
 
-
-        }, 4000)
-
-        this.updateCount();
+            }, 3000)
+        }
+        // this.updateCount();
     }
     closeModal() {
         this.mr.close();
@@ -125,16 +132,4 @@ export class ContactComponent implements OnInit {
         this.closeModal();
     }
 
-    change() {
-        if (this.colourIndex < 8) {
-
-            this.bgColor = this.colours[this.colourIndex];
-            this.colourIndex = this.colourIndex + 1
-        }
-        else {
-            this.colourIndex = 0;
-
-            this.bgColor = this.colours[this.colourIndex];
-        }
-    }
 }

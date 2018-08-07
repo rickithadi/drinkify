@@ -16,7 +16,7 @@ export class AdminServiceService {
     Acounter = this.AcounterSource.asObservable();
     count: number = 0;
 
-    Acount: number = 5;
+    Acount: number = 0;
 
     private showSource = new BehaviorSubject<boolean>(false);
     show = this.showSource.asObservable();

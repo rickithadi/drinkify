@@ -96,7 +96,6 @@ export class SettingsComponent implements OnInit {
 
     ngOnInit() {
         // this.assign();
-        this.level2();
         this.ddList = [{
             id: 9, name: "General Knowledge"
         }, {
@@ -157,7 +156,6 @@ export class SettingsComponent implements OnInit {
             city: [this.selectedItems]
         });
 
-        this.level2();
     }
 
     shuffle(a) {
