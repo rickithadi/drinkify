@@ -37,6 +37,8 @@ export class SettingsComponent implements OnInit {
     public goodieString: any = '../../assets/questions/never/goodie.json';
     selectedCategories = [];
     ddList = [];
+    default =
+    [{ id: 9, name: "General Knowledge" }]
     trivia_categories = [{
         id: 9, name: "General Knowledge"
     }, {
@@ -256,6 +258,7 @@ export class SettingsComponent implements OnInit {
         }
     }
     continue() {
+
         if (this.radioModel === 'Middle') {
             this.level2();;
         } else if (this.radioModel === 'Left') {
@@ -263,10 +266,14 @@ export class SettingsComponent implements OnInit {
         } else if (this.radioModel === 'Right') {
             this.level3();;
         }
-        console.log(this.value);
-        console.log(this.myForm.value);
-        this.q.setcat(this.myForm.value.city);
+        if (this.myForm.value.city = []) {
+            console.log('empty, setting to general', this.default)
+            this.q.setcat(this.default);
+        }
+        else {
 
+            this.q.setcat(this.myForm.value.city);
+        }
         this.route.navigate(["play"]);
     }
 }
