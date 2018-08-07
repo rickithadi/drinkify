@@ -55,8 +55,7 @@ export class BlogComponent implements OnInit {
     question2Arrow: any;
     questions2: any;
     count: number;
-    public neverHost: string = '../../assets/never.json'
-    public picoloHost = '../../assets/picolo.json'
+    public picoloHost = '../../assets/questions/drink/picolo.json'
     picolo: any;
     colourIndex: number = 0;
     colours: string[] = ['chocolate', 'orange', 'LightSlateGray', 'DarkSeaGreen', 'chocolate', 'orange', 'pink', 'DarkSeaGreen']
@@ -69,7 +68,11 @@ export class BlogComponent implements OnInit {
 
         this.subscription = this.admin.show
             .subscribe(show => this.show = show);
-
+        // this.getAll(this.picoloHost).then(data => {
+        //     console.log('pic', data)
+        //     this.picolo = data;
+        //     console.log('pic', this.picolo);
+        // })
     }
 
     ngOnInit() {
@@ -138,12 +141,19 @@ export class BlogComponent implements OnInit {
         console.log('this shit', cats)
         for (let i = 0; i < cats.length; i++) {
             this.getAll(cats[i]).then(data => {
-                // hold[i] = data.results;
                 this.result = this.result.concat(data.results);
+
                 console.log('result', this.result);
             })
 
         }
+        this.getAll(this.picoloHost).then(data => {
+            this.result = this.result.concat(data);
+            this.result = this.shuffle(this.result)
+            console.log(' final result', this.result);
+        })
+
+
 
         // console.log('after', new);
         // this.flatten(hold);;
