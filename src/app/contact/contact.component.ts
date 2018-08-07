@@ -23,26 +23,10 @@ import { NgForm } from "@angular/forms";
     styleUrls: ['./contact.component.css'],
 
     animations: [
-        trigger('colour', [
-            state('inactive', style({
-                'color': '#606060',
-                'background-color': 'transparent'
-
-
-            })),
-            state('active', style({
-                'color': '#fff',
-                'background-color': '*' // <====
-
-            })),
-            transition('inactive <=> active', animate('100ms ease-out'))
-
-        ]),
-
         trigger('state', [
             state('inactive', style({
                 'background-color': 'transparent',
-                'transform': 'rotate(180deg)'
+                'transform': 'rotate(36deg)'
 
 
             })),
@@ -88,6 +72,7 @@ export class ContactComponent implements OnInit {
 
 
     ngOnInit() {
+        console.log("arrow", this.question)
     }
     click() {
         this.penis = this.randomIntFromInterval(660, 900);
@@ -96,6 +81,7 @@ export class ContactComponent implements OnInit {
         this.state = this.state == 'active' ? 'inactive' : 'active';
         // this.change();
         console.log(this.transform);
+        // this.updateCount();
     }
 
     shuffle(a) {
@@ -112,18 +98,23 @@ export class ContactComponent implements OnInit {
 
     }
     updateCount() {
-        this.admin.incCounter();
+        this.admin.AincCounter();
     }
     skip() {
-        this.updateCount();
+
+        this.admin.AincCounter();
+        // this.updateCount();
     }
     openModal(template: TemplateRef<any>) {
-        this.updateCount();
-        this.mr = this.modalService.open(template, { size: 'lg', centered: true });
-        // this.updateCount();
-        // this.modalService.open(template, { size: 'lg', centered: true });
-        // this.mr = this.modalService.open(template, { centered: true });
 
+        console.log("arrow", this.question)
+        setTimeout(() => {
+            this.mr = this.modalService.open(template, { size: 'lg', centered: true });
+
+
+        }, 4000)
+
+        this.updateCount();
     }
     closeModal() {
         this.mr.close();
@@ -133,7 +124,6 @@ export class ContactComponent implements OnInit {
         this.updateCount();
         this.closeModal();
     }
-
 
     change() {
         if (this.colourIndex < 8) {

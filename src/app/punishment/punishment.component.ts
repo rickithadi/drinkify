@@ -81,7 +81,7 @@ export class PunishmentComponent implements OnInit {
     }
     skip() {
         this.checkSkip(this.skipCount);
-        this.admin.incCounter();
+        this.admin.AincCounter();
         // this.doubleTime();
     }
 }

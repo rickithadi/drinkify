@@ -8,11 +8,15 @@
         </div>
         <div class="btn-group btn-group-lg ; col-md-4; mx-auto" >
             <label class="btn btn-info" [(ngModel)]="radioModel"
-                   btnRadio="Left" tabindex="0" role="button" >Chill</label>
+                   btnRadio="Left" tabindex="0" role="button" (click)="level1()"
+            >Chill</label>
             <label class="btn btn-info" [(ngModel)]="radioModel"
-                   btnRadio="Middle" tabindex="0" role="button">Casual</label>
+                   btnRadio="Middle" tabindex="0" role="button" (click)="level2()
+                          "> Casual</label>
+             
             <label class="btn btn-info" [(ngModel)]="radioModel"
-                   btnRadio="Right" tabindex="0" role="button">Lit</label>
+                   btnRadio="Right" tabindex="0" role="button" (click)="level3()">
+                   Lit</label>
         </div>
 
         <div class="col-sm">

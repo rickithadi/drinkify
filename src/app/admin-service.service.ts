@@ -11,8 +11,12 @@ export class AdminServiceService {
     questions2: any;
     index: number;
     private counterSource = new BehaviorSubject<number>(0);
+    private AcounterSource = new BehaviorSubject<number>(0);
     counter = this.counterSource.asObservable();
+    Acounter = this.AcounterSource.asObservable();
     count: number = 0;
+
+    Acount: number = 5;
 
     private showSource = new BehaviorSubject<boolean>(false);
     show = this.showSource.asObservable();
@@ -25,15 +29,23 @@ export class AdminServiceService {
             parsed.push(tits);
         }
         return parsed;
+    } AincCounter() {
+        this.Acount = this.Acount + 1;
+        this.AcounterSource.next(this.Acount);
+        console.log('arrow', this.Acount);
+
+    }
+    AgetCounter() {
+        return this.Acount;
     }
     incCounter() {
         this.count = this.count + 1;
         this.counterSource.next(this.count);
-        console.log(this.count);
+        console.log('reg', this.count);
 
     }
     getCounter() {
-        return this.counter;
+        return this.count;
     }
 
     getReddit(input: string) {

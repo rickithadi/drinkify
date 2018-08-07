@@ -90,10 +90,12 @@ export class SettingsComponent implements OnInit {
     }
     ];
     constructor(private route: Router, private http: HttpClient, private q: QuestionsService, private fb: FormBuilder) {
+
+        this.assign();
     }
 
     ngOnInit() {
-        this.assign();
+        // this.assign();
         this.level2();
         this.ddList = [{
             id: 9, name: "General Knowledge"
@@ -155,6 +157,7 @@ export class SettingsComponent implements OnInit {
             city: [this.selectedItems]
         });
 
+        this.level2();
     }
 
     shuffle(a) {
@@ -266,14 +269,7 @@ export class SettingsComponent implements OnInit {
         } else if (this.radioModel === 'Right') {
             this.level3();;
         }
-        if (this.myForm.value.city = []) {
-            console.log('empty, setting to general', this.default)
-            this.q.setcat(this.default);
-        }
-        else {
-
-            this.q.setcat(this.myForm.value.city);
-        }
+        this.q.setcat(this.myForm.value.city);
         this.route.navigate(["play"]);
     }
 }

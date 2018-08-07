@@ -47,14 +47,11 @@ export class BlogComponent implements OnInit {
     result: any = [];
     resultArrow: any = [];
     state = 'active';
-    done: any = [];
     questions: any;
     questions1: any;
     show: boolean;
-    questionsArrow: any;
-    question2Arrow: any;
-    questions2: any;
     count: number;
+    Acount: number;
     public picoloHost = '../../assets/questions/drink/picolo.json'
     picolo: any;
     colourIndex: number = 0;
@@ -62,23 +59,27 @@ export class BlogComponent implements OnInit {
     bgColor = 'DarkSeaGreen';
 
     subscription: Subscription;
+    Asubscription: Subscription;
+    Bsubscription: Subscription;
     constructor(private q: QuestionsService, private http: HttpClient, private admin: AdminServiceService) {
         this.subscription = this.admin.counter
             .subscribe(count => this.count = count);
 
-        this.subscription = this.admin.show
+        this.Asubscription = this.admin.Acounter
+            .subscribe(Acount => this.Acount = Acount);
+
+        this.Bsubscription = this.admin.show
             .subscribe(show => this.show = show);
-        // this.getAll(this.picoloHost).then(data => {
-        //     console.log('pic', data)
-        //     this.picolo = data;
-        //     console.log('pic', this.picolo);
-        // })
+
+        this.resultArrow = this.q.getQ();
+
+        this.triviaBoyz();
     }
 
     ngOnInit() {
-        this.resultArrow = this.q.getQ();
-        this.triviaBoyz();
-        console.log('finally', this.result);
+        // this.resultArrow = this.q.getQ();
+        // console.log('wtf', this.resultArrow);
+        // this.triviaBoyz();
     }
 
     ngOnDestroy() {
