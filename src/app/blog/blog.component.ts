@@ -77,9 +77,6 @@ export class BlogComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.resultArrow = this.q.getQ();
-        // console.log('wtf', this.resultArrow);
-        // this.triviaBoyz();
     }
 
     ngOnDestroy() {

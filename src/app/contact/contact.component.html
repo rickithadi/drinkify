@@ -4,8 +4,9 @@
        <div class="container" style="height:100vh" >
            
            <!-- <i class="fa fa-long-arrow-down"  (click)="openModal(template)" [@state]="{value:state,params:{ transform: transform}}"> -->
-           <!-- </i>                -->
-           <img src="assets/long-arrow-alt-up-solid.svg" style="width:30% ; height::30%"  (click)="openModal(template)" [@state]="{value:state,params:{ transform: transform}}" (@state.done)="openModal(template)">
+           <!-- </i>                --><!-- 
+                                            <img src="assets/long-arrow-alt-up-solid.svg" style="width:30% ; height::30%"  (click)="openModal(template)" [@state]="{value:state,params:{ transform: transform}}" (@state.done)="openModal(template)">  -->
+           <img src="assets/long-arrow-alt-up-solid.svg" style="width:30% ; height::30%"  [@state]="{value:state,params:{ transform: transform}}" > 
            
            <br/>
        </div> 

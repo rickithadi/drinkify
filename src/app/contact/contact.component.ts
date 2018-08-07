@@ -9,11 +9,13 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import {
+
     FormGroup,
     FormControl,
     Validators,
     FormBuilder
 } from "@angular/forms";
+import { ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
 
 import { NgForm } from "@angular/forms";
@@ -26,7 +28,7 @@ import { NgForm } from "@angular/forms";
         trigger('state', [
             state('inactive', style({
                 'background-color': 'transparent',
-                'transform': 'rotate(36deg)'
+                'transform': 'rotate(0)'
 
 
             })),
@@ -56,12 +58,14 @@ export class ContactComponent implements OnInit {
     result: any = [];
     colourIndex: number = 0;
     show: boolean;
-
+    @ViewChild('template') private template;
     public mr: NgbModalRef;
     Asubscription: Subscription;
     Bsubscription: Subscription;
     state = 'active';
     thing = 'inactive';
+    spin: boolean = false;
+    check: number;
     constructor(private http: HttpClient
         , private modalService: NgbModal
         , private admin: AdminServiceService, private route: Router) {
@@ -69,27 +73,69 @@ export class ContactComponent implements OnInit {
 
         this.Bsubscription = this.admin.show
             .subscribe(show => this.show = show);
+        this.Asubscription = this.admin.Acounter
+            .subscribe(Acount => this.Acount = Acount);
+
+
 
 
     }
 
 
     ngOnInit() {
+        this.check = this.Acount;
         console.log("arrow", this.question);
+        // this.closeModal();
         this.click();
     }
-    click() {
-        this.penis = this.randomIntFromInterval(900, 1260);
-        let rotation: string = 'rotate(' + this.penis + 'deg)';
-        this.transform = rotation;
-        this.state = this.state == 'active' ? 'inactive' : 'active';
-        // this.change();
-        console.log(this.transform);
-        this.Asubscription = this.admin.Acounter
-            .subscribe(Acount => this.Acount = Acount);
+    checkFirst() {
+        let diff: number = this.Acount - this.check;
+        console.log('diff', diff);
+        if (this.check < this.Acount) {
+            if (diff === 9) {
 
+                console.log('switching');
+                console.log(' check', this.check)
+                console.log('acount', this.Acount)
+                this.spin = false
+                console.log('sping is', this.spin)
+                this.admin.setShowFalse;
+                return;
+            }
+            else {
+                console.log('fire');
+                console.log(' check', this.check)
+                console.log('acount', this.Acount)
+                this.spin = true
+                return;
+            }
+        }
+        else {
+            console.log('nothing hit check=', this.check)
+            console.log('acount', this.Acount)
 
-        this.updateCount();
+            this.updateCount();
+            return
+        }
+    } click() {
+        this.checkFirst();
+        if (this.spin === true) {
+            this.penis = this.randomIntFromInterval(900, 1260);
+            let rotation: string = 'rotate(' + this.penis + 'deg)';
+            this.transform = rotation;
+            this.state = this.state == 'active' ? 'inactive' : 'active';
+            // this.change();
+            console.log(this.transform);
+            // this.Asubscription = this.admin.Acounter
+            //     .subscribe(Acount => this.Acount = Acount);
+            // this.openModal(template)
+            this.openModal(this.template);
+            this.updateCount();
+        }
+        else {
+
+            console.log('noz', this.spin)
+        }
     }
 
     shuffle(a) {
@@ -114,7 +160,9 @@ export class ContactComponent implements OnInit {
         // this.updateCount();
     }
     openModal(template: TemplateRef<any>) {
-        if (this.show === true) {
+        if (this.show === true && this.spin === true) {
+            console.log('spin', this.spin)
+            console.log('show', this.show)
             setTimeout(() => {
                 this.mr = this.modalService.open(template, { size: 'lg', centered: true });
 
@@ -123,13 +171,4 @@ export class ContactComponent implements OnInit {
         }
         // this.updateCount();
     }
-    closeModal() {
-        this.mr.close();
-    }
-
-    up() {
-        this.updateCount();
-        this.closeModal();
-    }
-
 }

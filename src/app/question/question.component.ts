@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, TemplateRef } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { AdminServiceService } from '../admin-service.service';
@@ -39,14 +40,22 @@ import { NgbModal, NgbModalRef, ModalDismissReasons, NgbActiveModal } from '@ng-
 })
 export class QuestionComponent implements OnInit {
     @Input() question: any;
+    show: boolean;
     hide: boolean = true;
+    Bsubscription: Subscription;
     public mr: NgbModalRef;
     constructor(private admin: AdminServiceService, private modalService: NgbModal
         // , private mr: NgbModalRef
 
-    ) { }
+    ) {
+        this.Bsubscription = this.admin.show
+            .subscribe(show => this.show = show);
+
+    }
 
     ngOnInit() {
+
+        console.log("show=", this.show);
     }
     // modal(input: any) {
     //     console.log(input);

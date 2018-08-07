@@ -48,11 +48,6 @@ export class AdminServiceService {
         return this.count;
     }
 
-    getReddit(input: string) {
-        //gets subreddit as input
-        return this.http.get("https://www.reddit.com/r/" + input + "/search.json?q=oop&sort=top&restrict_sr=1");
-    }
-
     getTrivia() {
         return this.http.get("https://opentdb.com/api.php?amount=20&difficulty=easy&type=boolean");
     }
