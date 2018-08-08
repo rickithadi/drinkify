@@ -23,6 +23,25 @@
         </div>
     </div>
         <br/>
+ <div class="row ">
+                   
+                   <div class="custom-control custom-checkbox ; col-sm-4">
+                       <input type="checkbox" class="custom-control-input ; checkbox-inline" id="customCheck1">
+                       <label class="custom-control-label ; text-secondary" for="customCheck1">Change my view </label>
+                   </div>
+                   <div class="custom-control custom-checkbox ; col-sm-4 ">
+                       <input type="checkbox" class="custom-control-input ; checkbox-inline" id="customCheck2">
+                       <label class="custom-control-label ;; text-secondary" for="customCheck2">Unpopular opinions </label>
+                   </div>
+
+                   <div class="custom-control custom-checkbox ; col-sm-4 ">
+                       <input type="checkbox" class="custom-control-input ; checkbox-inline" id="customCheck3">
+                       <label class="custom-control-label ; text-secondary" for="customCheck3">Ask reddit </label>
+                   </div>
+
+               </div>
+               <br/>
+
         <label class="text-secondary" >Select categories</label>
         <form [formGroup]="myForm">
             <ng-multiselect-dropdown
@@ -35,17 +54,14 @@
                 (onSelect)="onItemSelect($event)">
             </ng-multiselect-dropdown>
                </form>
+               <br/>
+
     </div>
-    <br/>
-    <br/>
+ 
     <div class="container">
         
     <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
     <br/>
     <br/>
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck1">
-        <label class="custom-control-label" for="customCheck1">Change my view </label>
-        </div>
-    <button class="btn btn-info pull-right" (click)="continue()">Continue</button>
+      <button class="btn btn-info pull-right" (click)="continue()">Continue</button>
 </div>

@@ -26,15 +26,27 @@ export class SettingsComponent implements OnInit {
     awkward: any = [];
     dirty: any = [];
     goodie: any = [];
+    cmv: any = [];
+    picolo1: any = [];
+    picolo2: any = [];
+    picolo3: any = [];
+    unpop: any = [];
+    ask: any = [];
     myForm: FormGroup;
     selectedItems = [];
     dropdownSettings = {};
     public neverString: any = '../../assets/questions/never/never.json';
+    public cmvString: any = '../../assets/questions/cmv/cmv.json';
+    public askString: any = '../../assets/questions/cmv/askreddit.json';
+    public unpopString: any = '../../assets/questions/cmv/unpopopinions.json';
     public rabakString: any = '../../assets/questions/never/rabak.json';
     public alcoholString: any = '../../assets/questions/never/alcohol.json';
     public awkwardString: any = '../../assets/questions/never/awkward.json';
     public dirtyString: any = '../../assets/questions/never/dirty.json';
     public goodieString: any = '../../assets/questions/never/goodie.json';
+    public picoloHostCasual = '../../assets/questions/drink/casual.json'
+    public picoloHostMild = '../../assets/questions/drink/chill.json'
+    public picoloHostLit = '../../assets/questions/drink/lit.json'
     selectedCategories = [];
     ddList = [];
     default =
@@ -192,6 +204,46 @@ export class SettingsComponent implements OnInit {
 
         })
 
+        this.getAll(this.picoloHostMild, this.picolo1).then(data => {
+            this.picolo1 = data;
+
+        })
+
+        this.getAll(this.picoloHostCasual, this.picolo2).then(data => {
+            this.picolo2 = data;
+
+        })
+
+        this.getAll(this.picoloHostLit, this.picolo3).then(data => {
+            this.picolo3 = data;
+
+        })
+
+        this.getAll(this.cmvString, this.cmv).then(data => {
+            for (let i = 0; i < 25; i++) {
+
+                let hold = { question: data.data.children[i].data.title }
+                this.cmv.push(hold);
+            }
+        })
+        this.getAll(this.unpopString, this.unpop).then(data => {
+            for (let i = 0; i < 25; i++) {
+
+                let hold = { question: data.data.children[i].data.title }
+                this.unpop.push(hold);
+                // console.log(this.unpop);
+            }
+        })
+
+
+        this.getAll(this.askString, this.ask).then(data => {
+            for (let i = 0; i < 25; i++) {
+
+                let hold = { question: data.data.children[i].data.title }
+                this.ask.push(hold);
+            }
+        })
+
         this.getAll(this.neverString, this.never).then(data => {
             this.never = data;
 
@@ -261,10 +313,15 @@ export class SettingsComponent implements OnInit {
     continue() {
 
         if (this.radioModel === 'Middle') {
+            this.q.setPicolo(this.picolo2);
             this.level2();;
         } else if (this.radioModel === 'Left') {
+
+            this.q.setPicolo(this.picolo1);
             this.level1();;
         } else if (this.radioModel === 'Right') {
+
+            this.q.setPicolo(this.picolo3);
             this.level3();;
         }
         this.q.setcat(this.myForm.value.city);

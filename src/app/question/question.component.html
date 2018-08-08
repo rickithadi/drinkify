@@ -2,46 +2,28 @@
     
 <div class="container" (click)="next(this.question,template)">
     <div class="col-md-12 ; mx-auto ; h1">
-    <!-- <h1>{{question.question}}</h1>     -->
+        <!-- <h1>{{question.question}}</h1>     -->
         <div [innerHTML]='question.question' class="text-center">
-            </div>
-        <hr/>
         </div>
-            <div class="container ">
-                <div class="row">
-                    <div class="col-sm " *ngFor="let i of question['incorrect_answers']">
-                        
-                        <div [innerHTML]="i" class="h4">
-                        </div> 
-                    </div>
+        <hr/>
+    </div>
+    <div class="container " *ngIf="question.correct_answer">
+        <div class="row">
+            <div class="col-sm " *ngFor="let i of question['incorrect_answers']">
+                
+                <div [innerHTML]="i" class="h4">
+                </div> 
+            </div>
 
-                   <div class="col-sm">
-                       <div [innerHTML]="question['correct_answer']" class="h4">
-                           </div>
-                    </div>
-
-               </div>
+            <div class="col-sm">
+                <div [innerHTML]="question['correct_answer']" class="h4">
                 </div>
+            </div>
+
+        </div>
+    </div>
+    
             
-                <!-- <div [innerHTML]="question['correct_answer']" class="h4">
-                     </div>
-                     <div class="h4" *ngFor="let i of question['incorrect_answers']">
-                     
-                     <div [innerHTML]="i" class="col-md-3">
-                     </div> 
-                     </div> -->
-
-        <!-- <ng-template #template>
-             <div class="modal-body" (click)="up()">
-             <div [innerHTML]="question['correct_answer']" class="text-center">
-             
-             </div>
-             </div>
-
-
-             </ng-template>
-        -->
-
 </div>
 <ng-template #template let-d="dismiss"  let-c="close" >
     <div class="modal-body ;text-center; text-primary" (click)="up()">

@@ -53,7 +53,14 @@ export class BlogComponent implements OnInit {
     count: number;
     Acount: number;
     public picoloHost = '../../assets/questions/drink/picolo.json'
+    public picoloHostCasual = '../../assets/questions/drink/casual.json'
+    public picoloHostMild = '../../assets/questions/drink/chill.json'
+    public picoloHostList = '../../assets/questions/drink/lit.json'
+    piq: any;;
     picolo: any;
+    picolo1: any;
+    picolo2: any;
+    picolo3: any;
     colourIndex: number = 0;
     colours: string[] = ['chocolate', 'orange', 'LightSlateGray', 'DarkSeaGreen', 'chocolate', 'orange', 'pink', 'DarkSeaGreen']
     bgColor = 'DarkSeaGreen';
@@ -74,6 +81,13 @@ export class BlogComponent implements OnInit {
         this.resultArrow = this.q.getQ();
 
         this.triviaBoyz();
+        this.piq = this.q.getPicolo();
+        this.result = this.result.concat(this.piq);
+        this.result = this.shuffle(this.result);
+        console.log(' picolo result', this.result);
+
+
+
     }
 
     ngOnInit() {
@@ -136,26 +150,21 @@ export class BlogComponent implements OnInit {
     }
     triviaBoyz() {
         let cats: string[] = this.q.getCat();
-        console.log('this shit', cats)
         for (let i = 0; i < cats.length; i++) {
             this.getAll(cats[i]).then(data => {
                 this.result = this.result.concat(data.results);
-
-                console.log('result', this.result);
+                this.result = this.shuffle(this.result);;
+                console.log('subscripttion', this.result)
+                // this.piq = this.q.getPicolo();
+                // this.result = this.result.concat(this.piq);
+                // this.result = this.shuffle(this.result);
+                // console.log('result', this.result);
             })
 
         }
-        this.getAll(this.picoloHost).then(data => {
-            this.result = this.result.concat(data);
-            this.result = this.shuffle(this.result)
-            console.log(' final result', this.result);
-        })
-
-
 
         // console.log('after', new);
         // this.flatten(hold);;
-        console.log(this.result)
 
     }
 

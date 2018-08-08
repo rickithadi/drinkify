@@ -7,7 +7,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 
 @Injectable()
 export class QuestionsService {
-
+    picolo: any[];
     arrowQuestions: any[] = [];
     triviaCat: any[] = [];
     trivia: any[] = [];
@@ -15,6 +15,14 @@ export class QuestionsService {
     constructor(private http: HttpClient) {
     }
 
+    setPicolo(input: any) {
+        console.log('picolo set to', input)
+        this.picolo = input
+    }
+    getPicolo() {
+        console.log('getting picolo', this.picolo)
+        return this.picolo;
+    }
     setQ(input: any) {
         this.arrowQuestions = input;
         console.log('set arrow to', this.arrowQuestions);
