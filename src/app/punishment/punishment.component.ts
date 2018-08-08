@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { QuestionsService } from '../questions.service';
 
 import { AdminServiceService } from '../admin-service.service';
 @Component({
@@ -10,20 +11,29 @@ export class PunishmentComponent implements OnInit {
     @Input() hide?: boolean;
     skipCount = 0;
     punishments = ['One sip', 'Half a cup', 'Finish your cup', 'Full cup', 'Shot']
+
+    pL1 = ['One sip', 'two sips', 'three sips']
+    pL2 = ['three sips', 'two sips', 'four sips']
+    pL3 = ['three sips', 'half a cup', 'four sips']
+    pL4 = ['full cup', 'half a cup', 'four sips']
+    pL5 = ['full cup', 'half a cup', 'shot', 'Undo a button', 'two shots']
     punishments2 = ['Half a cup', 'Finish your cup', 'Full cup', 'Shot']
     punishments3 = ['Finish your cup', 'Full cup', 'Shot']
-    punishments4 = ['Full cup', '2 Shots', 'shot']
+    punishments4 = ['Full cup', '2 Shots', 'shot', 'Undo two buttons']
+    mod: number;
     index: number;
     current: string = this.punishments[0];
     double: string;
     triple: string;
     toh: string;
     disable: boolean = false;
-    constructor(private admin: AdminServiceService) {
-        this.current = this.chooseOne(this.current, this.punishments);
+    constructor(private q: QuestionsService, private admin: AdminServiceService) {
+        // this.current = this.chooseOne(this.current, this.punishments);
+        this.mod = this.q.getMod();
     }
 
     ngOnInit() {
+        this.checkModifier();
         console.log('hidden', this.hide);
         if (this.hide == true) {
             this.disable = true;
@@ -79,5 +89,28 @@ export class PunishmentComponent implements OnInit {
         this.checkSkip(this.skipCount);
         this.admin.AincCounter();
         // this.doubleTime();
+    }
+    checkModifier() {
+        if (this.mod === 1) {
+            console.log('hit', this.mod)
+            this.current = this.chooseOne(this.current, this.pL1);
+        }
+        if (this.mod === 2) {
+
+            console.log('hit', this.mod)
+            this.current = this.chooseOne(this.current, this.pL2);
+        } if (this.mod === 3) {
+
+            console.log('hit', this.mod)
+            this.current = this.chooseOne(this.current, this.pL3);
+        } if (this.mod === 4) {
+
+            console.log('hit', this.mod)
+            this.current = this.chooseOne(this.current, this.pL4);
+        } if (this.mod === 5) {
+
+            console.log('hit toh', this.mod)
+            this.current = this.chooseOne(this.current, this.pL5);
+        }
     }
 }

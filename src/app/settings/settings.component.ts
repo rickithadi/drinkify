@@ -13,9 +13,11 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
     styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-    value: number = 2; options: Options = {
+    value: number = 2;
+    options: Options = {
         floor: 0, ceil: 5
         , showSelectionBar: true
+        , minLimit: 1
     };
     radioModel = 'Middle';
     cmvModel;
@@ -353,6 +355,7 @@ export class SettingsComponent implements OnInit {
         }
         this.checkSubreddits();
         this.q.setcat(this.myForm.value.city);
+        this.q.setMod(this.value);
         this.route.navigate(["play"]);
     }
 }

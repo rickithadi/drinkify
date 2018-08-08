@@ -11,6 +11,7 @@ export class QuestionsService {
     arrowQuestions: any[] = [];
     triviaCat: any[] = [];
     trivia: any[] = [];
+    modifier::number;
     tResult: any[] = [];
     constructor(private http: HttpClient) {
     }
@@ -23,6 +24,14 @@ export class QuestionsService {
     setPicolo(input: any) {
         console.log('picolo set to', input)
         this.picolo = input
+    }
+    setMod(input: number) {
+        this.modifier = input;
+        console.log('mod set to', this.modifier);
+    }
+    getMod() {
+        console.log('getting mod', this.modifier)
+        return this.modifier;
     }
     getPicolo() {
         this.picolo = this.shuffle(this.picolo);

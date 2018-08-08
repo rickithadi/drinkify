@@ -21,7 +21,6 @@
         <div class="col-sm">
         </div>
     </div>
-        <br/>
  <div class="row">
                    
                    <div class="custom-control custom-checkbox ; col-sm-4">
@@ -43,7 +42,6 @@ class="custom-control-input ; checkbox-inline" id="customCheck1" [value]="cmv">
 
                </div>
                <br/>
-
         <label class="text-secondary" >Select categories</label>
         <form [formGroup]="myForm">
             <ng-multiselect-dropdown
@@ -56,12 +54,12 @@ class="custom-control-input ; checkbox-inline" id="customCheck1" [value]="cmv">
                 (onSelect)="onItemSelect($event)">
             </ng-multiselect-dropdown>
                </form>
-               <br/>
 
     </div>
+    <br/>
  
     <div class="container">
-        
+        <label class=text-secondary>How much can you drink?</label> 
     <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
     <br/>
     <br/>
