@@ -43,7 +43,7 @@
         -->
 
 </div>
-<ng-template #template>
+<ng-template #template let-d="dismiss"  let-c="close" >
     <div class="modal-body ;text-center; text-primary" (click)="up()">
         <div [innerHTML]="question['correct_answer']" class="text-center">
             

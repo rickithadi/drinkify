@@ -42,6 +42,7 @@ export class QuestionComponent implements OnInit {
     @Input() question: any;
     show: boolean;
     hide: boolean = true;
+    closeResult: string;
     Bsubscription: Subscription;
     public mr: NgbModalRef;
     constructor(private admin: AdminServiceService, private modalService: NgbModal
@@ -66,14 +67,15 @@ export class QuestionComponent implements OnInit {
         this.admin.incCounter();
     }
     openModal(template: TemplateRef<any>) {
-        this.mr = this.modalService.open(template, { size: 'lg', centered: true });
-
-        // this.modalService.open(template, { size: 'lg', centered: true });
-        // this.mr = this.modalService.open(template, { centered: true });
-
+        this.mr = this.modalService.open(template, { size: 'lg', centered: true })
+        this.mr.result.then((result) => {
+            this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });;
     }
     closeModal() {
-        this.mr.close();
+        this.mr.dismiss();
     }
     next(input: object, template: TemplateRef<any>) {
         console.log('checkking', input)
@@ -87,6 +89,23 @@ export class QuestionComponent implements OnInit {
     up() {
         this.updateCount();
         this.closeModal();
+    }
+    private getDismissReason(reason: any): string {
+        if (reason === ModalDismissReasons.ESC) {
+            console.log('close')
+            this.up();
+            return 'by pressing ESC';
+        } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+
+            console.log('close')
+            this.up();
+            return 'by clicking on a backdrop';
+        } else {
+
+            console.log('close')
+            this.up();
+            return `with: ${reason}`;
+        }
     }
 
 }
