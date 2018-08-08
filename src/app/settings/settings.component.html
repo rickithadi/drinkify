@@ -2,7 +2,6 @@
 
 <div class="container">
     <br/>
-    <br/>
     <div class="row">
         <div class="col-sm">
         </div>
@@ -23,20 +22,23 @@
         </div>
     </div>
         <br/>
- <div class="row ">
+ <div class="row">
                    
                    <div class="custom-control custom-checkbox ; col-sm-4">
-                       <input type="checkbox" class="custom-control-input ; checkbox-inline" id="customCheck1">
+                       <input type="checkbox" [(ngModel)]="cmvModel"
+class="custom-control-input ; checkbox-inline" id="customCheck1" [value]="cmv">
                        <label class="custom-control-label ; text-secondary" for="customCheck1">Change my view </label>
                    </div>
-                   <div class="custom-control custom-checkbox ; col-sm-4 ">
-                       <input type="checkbox" class="custom-control-input ; checkbox-inline" id="customCheck2">
+                   <div class="custom-control custom-checkbox ; col-sm-4 " >
+
+                       <input type="checkbox" class="custom-control-input ; checkbox-inline" [(ngModel)]="unpopModel" [value]=true id="customCheck2">
                        <label class="custom-control-label ;; text-secondary" for="customCheck2">Unpopular opinions </label>
                    </div>
 
-                   <div class="custom-control custom-checkbox ; col-sm-4 ">
-                       <input type="checkbox" class="custom-control-input ; checkbox-inline" id="customCheck3">
-                       <label class="custom-control-label ; text-secondary" for="customCheck3">Ask reddit </label>
+                   <div class="custom-control custom-checkbox ; col-sm-4 "> 
+
+                       <input type="checkbox" class="custom-control-input ; checkbox-inline" [(ngModel)]="askRModel" [value]="ask" id="customCheck3">
+                       <label class="custom-control-label ; text-secondary" for="customCheck3"> Ask reddit </label>
                    </div>
 
                </div>

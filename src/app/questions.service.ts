@@ -14,12 +14,18 @@ export class QuestionsService {
     tResult: any[] = [];
     constructor(private http: HttpClient) {
     }
+    appendPicolo(input: any) {
+        console.log('picolo apepnding with ', input)
+        this.picolo = this.picolo.concat(input);
+        console.log('now picolo', this.picolo)
+    }
 
     setPicolo(input: any) {
         console.log('picolo set to', input)
         this.picolo = input
     }
     getPicolo() {
+        this.picolo = this.shuffle(this.picolo);
         console.log('getting picolo', this.picolo)
         return this.picolo;
     }
@@ -82,4 +88,14 @@ export class QuestionsService {
 
 
     }
+    shuffle(a) {
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+
+        }
+        return a;
+
+    }
+
 }

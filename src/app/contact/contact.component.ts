@@ -52,7 +52,6 @@ export class ContactComponent implements OnInit {
     penis: number = 0
     transform: string = 'rotate(240deg)';
     bgColor = 'transparent';
-    public apiHost: string = '../../assets/never.json'
     countryList: any;
     Acount: number;
     result: any = [];

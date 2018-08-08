@@ -18,6 +18,9 @@ export class SettingsComponent implements OnInit {
         , showSelectionBar: true
     };
     radioModel = 'Middle';
+    cmvModel;
+    askRModel;
+    unpopModel;
     data: any[] = [];
     never: any[] = [];
     disabled = false; ShowFilter = false; limitSelection = false;
@@ -33,6 +36,7 @@ export class SettingsComponent implements OnInit {
     unpop: any = [];
     ask: any = [];
     myForm: FormGroup;
+    checkForm: FormGroup;
     selectedItems = [];
     dropdownSettings = {};
     public neverString: any = '../../assets/questions/never/never.json';
@@ -310,8 +314,31 @@ export class SettingsComponent implements OnInit {
             this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
         }
     }
-    continue() {
+    checkSubreddits() {
+        console.log('check', this.cmvModel);
+        console.log('ask', this.askRModel);
+        console.log('un', this.unpopModel);
 
+        if (this.cmvModel === true) {
+            console.log('appending cmv')
+            this.q.appendPicolo(this.cmv);
+        }
+        if (this.askRModel === true) {
+
+            console.log('appending ask')
+            this.q.appendPicolo(this.ask);
+        }
+        if (this.unpopModel === true) {
+
+            console.log('appending unpop')
+            this.q.appendPicolo(this.unpop);
+        }
+
+    }
+    continue() {
+        console.log('check', this.cmvModel);
+        console.log('ask', this.askRModel);
+        console.log('un', this.unpopModel);
         if (this.radioModel === 'Middle') {
             this.q.setPicolo(this.picolo2);
             this.level2();;
@@ -324,6 +351,7 @@ export class SettingsComponent implements OnInit {
             this.q.setPicolo(this.picolo3);
             this.level3();;
         }
+        this.checkSubreddits();
         this.q.setcat(this.myForm.value.city);
         this.route.navigate(["play"]);
     }
