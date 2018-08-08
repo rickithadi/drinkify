@@ -171,4 +171,8 @@ export class ContactComponent implements OnInit {
         }
         // this.updateCount();
     }
+    closeModal() {
+        this.mr.dismiss();
+    }
+
 }
