@@ -11,7 +11,7 @@ export class QuestionsService {
     arrowQuestions: any[] = [];
     triviaCat: any[] = [];
     trivia: any[] = [];
-    modifier::number;
+    modifier: number;
     tResult: any[] = [];
     constructor(private http: HttpClient) {
     }

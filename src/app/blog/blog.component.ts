@@ -11,6 +11,7 @@ import { BsModalService } from "ngx-bootstrap/modal";
 import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
 import { Subscription } from 'rxjs/Subscription';
 
+import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 @Component({
     selector: 'app-blog',
@@ -58,6 +59,7 @@ export class BlogComponent implements OnInit {
     public picoloHostList = '../../assets/questions/drink/lit.json'
     piq: any;;
     picolo: any;
+    donezo: boolean = false;
     picolo1: any;
     picolo2: any;
     picolo3: any;
@@ -68,7 +70,7 @@ export class BlogComponent implements OnInit {
     subscription: Subscription;
     Asubscription: Subscription;
     Bsubscription: Subscription;
-    constructor(private q: QuestionsService, private http: HttpClient, private admin: AdminServiceService) {
+    constructor(private route: Router, private q: QuestionsService, private http: HttpClient, private admin: AdminServiceService) {
         this.subscription = this.admin.counter
             .subscribe(count => this.count = count);
 
@@ -99,6 +101,7 @@ export class BlogComponent implements OnInit {
 
     }
     change() {
+        this.done();
         if (this.colourIndex < 8) {
 
             this.bgColor = this.colours[this.colourIndex];
@@ -168,6 +171,12 @@ export class BlogComponent implements OnInit {
 
     }
 
+    done() {
+        if (this.Acount + this.count == 50) {
+            console.log('donezo')
+            this.route.navigate(["donezo"]);
+        }
+    }
 
 }
 

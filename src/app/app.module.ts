@@ -29,11 +29,12 @@ import { PunishmentComponent } from './punishment/punishment.component';
 import { SettingsComponent } from './settings/settings.component';
 import { QuestionsService } from './questions.service';
 import { ButtonsModule } from 'ngx-bootstrap';
+import { DonezoComponent } from './donezo/donezo.component';
 const appRoutes: Routes = [
     { path: "home", component: HomeComponent },
     { path: "settings", component: SettingsComponent },
-    { path: "play", component: BlogComponent }
-    ,
+    { path: "play", component: BlogComponent },
+    { path: "donezo", component: DonezoComponent },
     { path: "**", component: HomeComponent }
 
 ];
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
         ContactComponent,
         QuestionComponent,
         PunishmentComponent,
-        SettingsComponent
+        SettingsComponent,
+        DonezoComponent
     ],
     imports: [
         TabsModule.forRoot(),
