@@ -116,7 +116,9 @@ export class ContactComponent implements OnInit {
             this.updateCount();
             return
         }
-    } click() {
+    }
+    click() {
+
         this.checkFirst();
         if (this.spin === true) {
             this.penis = this.randomIntFromInterval(900, 1260);
@@ -172,6 +174,10 @@ export class ContactComponent implements OnInit {
     }
     closeModal() {
         this.mr.dismiss();
+    }
+    onSwipe(input: any) {
+        console.log('swipper')
+        this.click();
     }
 
 }
