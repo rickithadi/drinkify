@@ -28,10 +28,15 @@ import { NgForm } from "@angular/forms";
         trigger('state', [
             state('inactive', style({
                 'background-color': 'transparent',
-                'transform': 'rotate(0)'
+                'transform': '{{transform2}}'
 
 
-            })),
+            })
+                ,
+                { params: { 'transform2': 'rotate(10deg)' } }),
+
+
+
             state('active', style({
                 'background-color': 'transparent',
                 'transform': '{{transform}}'
@@ -40,6 +45,7 @@ import { NgForm } from "@angular/forms";
 
             }),
                 { params: { 'transform': 'rotate(180deg)' } }),
+
 
             transition('inactive <=> active', animate('2000ms ease-out'))
 
@@ -50,7 +56,8 @@ export class ContactComponent implements OnInit {
     @Input() question: any;
     stop: boolean = false;
     penis: number = 0
-    transform: string = 'rotate(240deg)';
+    transform: string = 'rotate(0deg)';
+    transform2: string = 'rotate(10deg)';
     bgColor = 'transparent';
     countryList: any;
     Acount: number;
@@ -85,7 +92,7 @@ export class ContactComponent implements OnInit {
         this.check = this.Acount;
         console.log("arrow", this.question);
         // this.closeModal();
-        this.click();
+        this.click(20, 20);
     }
     checkFirst() {
         let diff: number = this.Acount - this.check;
@@ -98,7 +105,7 @@ export class ContactComponent implements OnInit {
                 console.log('acount', this.Acount)
                 this.spin = false
                 console.log('sping is', this.spin)
-                this.admin.setShowFalse;
+                this.admin.setShowFalse();
                 return;
             }
             else {
@@ -117,16 +124,23 @@ export class ContactComponent implements OnInit {
             return
         }
     }
-    click() {
+    click(direction: number, speed: number) {
 
         this.checkFirst();
         if (this.spin === true) {
-            this.penis = this.randomIntFromInterval(900, 1260);
+            this.penis = 0;
+            this.penis = this.randomIntFromInterval(900, 2260);
+            console.log('speed', speed)
+            speed = speed - 1000;
+            // this.penis = speed * 15;
             let rotation: string = 'rotate(' + this.penis + 'deg)';
+            let penile = this.penis - 180;
+            let rotation2: string = 'rotate(' + penile + 'deg)';
             this.transform = rotation;
+            this.transform2 = rotation2;
             this.state = this.state == 'active' ? 'inactive' : 'active';
             // this.change();
-            console.log(this.transform);
+            console.log('state is ', rotation);
             // this.Asubscription = this.admin.Acounter
             //     .subscribe(Acount => this.Acount = Acount);
             // this.openModal(template)
@@ -176,8 +190,12 @@ export class ContactComponent implements OnInit {
         this.mr.dismiss();
     }
     onSwipe(input: any) {
-        console.log('swipper')
-        this.click();
+        // console.log('swipper', input)
+        let speed = input.velocity;
+        let direction = input.direction;
+        console.log('speed', speed);
+        console.log('direction', direction);
+        this.click(direction, speed);
     }
 
 }

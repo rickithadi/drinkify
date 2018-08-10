@@ -1,4 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
+import * as Hammer from 'hammerjs';
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -38,6 +41,13 @@ const appRoutes: Routes = [
     { path: "**", component: HomeComponent }
 
 ];
+export class MyHammerConfig extends HammerGestureConfig {
+    overrides = <any>{
+        'swipe': { velocity: 0.2, threshold: 2, direction: Hammer.DIRECTION_ALL } // override default settings
+
+    }
+
+}
 @NgModule({
     declarations: [
         AppComponent,
@@ -68,7 +78,11 @@ const appRoutes: Routes = [
         BrowserModule,
         RouterModule.forRoot(appRoutes)
     ],
-    providers: [AdminServiceService, QuestionsService, OnlyLoggedInGuard],
+    providers: [{
+        provide: HAMMER_GESTURE_CONFIG,
+        useClass: MyHammerConfig
+
+    }, AdminServiceService, QuestionsService, OnlyLoggedInGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,7 +16,7 @@ export class PunishmentComponent implements OnInit {
     pL2 = ['three sips', 'two sips', 'four sips']
     pL3 = ['three sips', 'half a cup', 'four sips']
     pL4 = ['full cup', 'half a cup', 'four sips']
-    pL5 = ['full cup', 'half a cup', 'shot', 'Undo a button', 'two shots']
+    pL5 = ['full cup', 'half a cup', 'shot', 'Undo a button', 'full cup and a buddha clap']
     punishments2 = ['Half a cup', 'Finish your cup', 'Full cup', 'Shot']
     punishments3 = ['Finish your cup', 'Full cup', 'Shot']
     punishments4 = ['Full cup', '2 Shots', 'shot', 'Undo two buttons']
