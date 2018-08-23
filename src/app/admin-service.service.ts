@@ -29,7 +29,17 @@ export class AdminServiceService {
             parsed.push(tits);
         }
         return parsed;
-    } AincCounter() {
+    }
+    resetCounters() {
+        this.Acount = 0;
+        this.count = 0;
+        this.AcounterSource.next(this.Acount);
+        this.counterSource.next(this.count);
+        console.log('arrow', this.Acount);
+
+
+    }
+    AincCounter() {
         this.Acount = this.Acount + 1;
         this.AcounterSource.next(this.Acount);
         console.log('arrow', this.Acount);

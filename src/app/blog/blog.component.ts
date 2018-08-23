@@ -172,7 +172,7 @@ export class BlogComponent implements OnInit {
     }
 
     done() {
-        if (this.Acount + this.count == 50) {
+        if (this.Acount + this.count > 50) {
             console.log('donezo')
             this.route.navigate(["donezo"]);
         }
